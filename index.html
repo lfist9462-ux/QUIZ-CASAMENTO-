@@ -3,15 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Casamento</title>
 
-<link rel="stylesheet" href="estilo.css">
+  <title>Quiz João & Adriana</title>
+
+  <link rel="stylesheet" href="estilo.css">
 </head>
+
 <body>
 
-<h1>Quiz João & Adriana</h1>
+  <!-- TELA INICIAL -->
+  <section id="inicio" class="tela-inicial">
 
-<script src="script.js"></script>
+    <div class="capa-conteudo">
+      <p class="frase">Nossa história, nosso amor ❤️</p>
+
+      <h1>João & Adriana</h1>
+
+      <p class="data">03 de agosto de 2026</p>
+
+      <p class="descricao">
+        Descubra o quanto você conhece a nossa história!
+      </p>
+
+      <button onclick="iniciarQuiz()">
+        ✨ Começar o Quiz
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- QUIZ -->
+  <section id="quiz" class="quiz-container">
+
+    <p id="progresso"></p>
+
+    <h2 id="pergunta"></h2>
+
+    <div id="alternativas"></div>
+
+  </section>
+
+
+  <script src="script.js"></script>
 
 </body>
 </html>
