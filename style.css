@@ -10,38 +10,100 @@ body {
   text-align: center;
 }
 
+/* TELA INICIAL */
 #inicio {
   min-height: 100vh;
-  padding: 25px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: #000;
+}
+
+/* CAPA COM A FOTO */
+.capa {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 750px;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
+.capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ESCURECE LEVEMENTE A FOTO */
+.capa::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.20);
+}
+
+/* ÁREA DO TEXTO */
+.texto-capa {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+  color: white;
+  text-align: center;
 }
 
-.foto-capa {
+/* FAIXA ATRÁS DO TEXTO */
+.texto-capa::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+
   width: 100%;
-  max-width: 380px;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 20px;
-  margin-bottom: 25px;
+  height: 430px;
+
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(4px);
+
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
 }
 
-#inicio h2 {
+/* TÍTULO PEQUENO */
+.texto-capa h2 {
   font-size: 24px;
+  margin: 10px;
+  text-shadow: 2px 2px 5px #000;
 }
 
-#inicio h1 {
+/* NOME DO CASAL */
+.texto-capa h1 {
   font-size: 42px;
-  margin: 20px 0;
+  margin: 15px 0;
+  text-shadow: 2px 2px 5px #000;
 }
 
-#inicio p {
+/* TEXTOS */
+.texto-capa p {
   font-size: 20px;
-  margin: 12px;
+  margin: 10px;
+  text-shadow: 1px 1px 3px #000;
 }
 
+/* BOTÃO */
+.texto-capa button {
+  margin-top: 20px;
+}
+
+/* BOTÕES */
 button {
   border: none;
   border-radius: 12px;
@@ -51,24 +113,35 @@ button {
   cursor: pointer;
   background: white;
   color: #333;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
+button:hover {
+  transform: scale(1.03);
+}
+
+/* QUIZ */
 #quiz {
   display: none;
   min-height: 100vh;
   padding: 30px 15px;
+  background: #fff8f8;
 }
 
+/* PERGUNTA */
 #pergunta {
   font-size: 28px;
   line-height: 1.3;
+  margin: 30px auto;
+  max-width: 700px;
 }
 
+/* ALTERNATIVAS */
 #alternativas {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 #alternativas button {
@@ -76,7 +149,42 @@ button {
   max-width: 500px;
 }
 
+/* PROGRESSO */
 #progresso {
   font-size: 18px;
   margin-bottom: 30px;
+}
+
+/* CELULAR */
+@media (max-width: 600px) {
+
+  #inicio {
+    padding: 10px;
+  }
+
+  .capa {
+    height: 700px;
+    border-radius: 18px;
+  }
+
+  .texto-capa::before {
+    height: 440px;
+  }
+
+  .texto-capa h2 {
+    font-size: 21px;
+  }
+
+  .texto-capa h1 {
+    font-size: 34px;
+  }
+
+  .texto-capa p {
+    font-size: 17px;
+  }
+
+  .texto-capa button {
+    font-size: 16px;
+    padding: 14px 20px;
+  }
 }
