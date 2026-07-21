@@ -3,47 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Quiz João & Adriana</title>
+  <title>João & Adriana</title>
 
   <link rel="stylesheet" href="estilo.css">
 </head>
 
 <body>
 
-  <!-- TELA INICIAL -->
-  <section id="inicio" class="tela-inicial">
+  <div id="inicio">
 
-    <div class="capa-conteudo">
-      <p class="frase">Nossa história, nosso amor ❤️</p>
+    <img src="IMG_2431.png" alt="João e Adriana" class="foto-capa">
 
-      <h1>João & Adriana</h1>
+    <h2>Nossa história, nosso amor ❤️</h2>
 
-      <p class="data">03 de agosto de 2026</p>
+    <h1>João & Adriana</h1>
 
-      <p class="descricao">
-        Descubra o quanto você conhece a nossa história!
-      </p>
+    <p>03 de agosto de 2026</p>
 
-      <button onclick="iniciarQuiz()">
-        ✨ Começar o Quiz
-      </button>
-    </div>
+    <p>Descubra o quanto você conhece a nossa história!</p>
 
-  </section>
+    <button onclick="iniciarQuiz()">
+      ✨ Começar o Quiz
+    </button>
 
+  </div>
 
-  <!-- QUIZ -->
-  <section id="quiz" class="quiz-container">
+  <div id="quiz">
 
-    <p id="progresso"></p>
+    <div id="progresso"></div>
 
     <h2 id="pergunta"></h2>
 
     <div id="alternativas"></div>
 
-  </section>
-
+  </div>
 
   <script src="script.js"></script>
 
