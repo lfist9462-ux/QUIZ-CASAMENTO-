@@ -10,86 +10,73 @@ body {
   text-align: center;
 }
 
-/* TELA INICIAL */
 #inicio {
   min-height: 100vh;
+  padding: 25px 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 20px;
+  justify-content: center;
+}
 
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-    url("IMG_2431.png");
+.foto-capa {
+  width: 100%;
+  max-width: 380px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 25px;
+}
 
-  background-size: cover;
-  background-position: center;
+#inicio h2 {
+  font-size: 24px;
 }
 
 #inicio h1 {
-  color: white;
-  font-size: clamp(32px, 8vw, 52px);
-  margin-bottom: 10px;
-  text-shadow: 2px 2px 5px #000;
+  font-size: 42px;
+  margin: 20px 0;
 }
 
 #inicio p {
-  color: white;
-  font-size: clamp(18px, 5vw, 24px);
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 3px #000;
+  font-size: 20px;
+  margin: 12px;
 }
 
-/* BOTÕES */
 button {
   border: none;
   border-radius: 12px;
-  padding: 15px 20px;
+  padding: 15px 22px;
   margin: 8px;
-  font-size: 17px;
+  font-size: 18px;
   cursor: pointer;
   background: white;
   color: #333;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-  transform: scale(1.03);
-}
-
-/* QUIZ */
 #quiz {
   display: none;
   min-height: 100vh;
   padding: 30px 15px;
-  background: #fff8f8;
 }
 
 #pergunta {
-  font-size: clamp(24px, 6vw, 36px);
+  font-size: 28px;
   line-height: 1.3;
-  margin: 30px auto;
-  max-width: 700px;
-  word-wrap: break-word;
 }
 
 #alternativas {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
 }
 
 #alternativas button {
   width: 100%;
   max-width: 500px;
-  min-height: 55px;
 }
 
 #progresso {
   font-size: 18px;
-  margin-top: 30px;
+  margin-bottom: 30px;
 }
