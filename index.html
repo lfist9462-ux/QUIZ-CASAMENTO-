@@ -3,42 +3,306 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>João & Adriana</title>
 
-  <link rel="stylesheet" href="estilo.css">
+  <title>João & Adriana ❤️</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div id="inicio">
+  <!-- TELA INICIAL -->
+  <section id="inicio">
 
-    <img src="IMG_2431.png" alt="João e Adriana" class="foto-capa">
+    <div class="capa">
 
-    <h2>Nossa história, nosso amor ❤️</h2>
+      <!-- SUA FOTO -->
+      <img src="IMG_2431.png" alt="João e Adriana">
 
-    <h1>João & Adriana</h1>
+      <!-- FITA ROSA -->
+      <div class="fita">
+        <span>♥</span>
+      </div>
 
-    <p>03 de agosto de 2026</p>
+      <!-- PAINEL DO TEXTO -->
+      <div class="painel">
 
-    <p>Descubra o quanto você conhece a nossa história!</p>
+        <div class="subtitulo">
+          Nossa história, nosso amor ❤️
+        </div>
 
-    <button onclick="iniciarQuiz()">
-      ✨ Começar o Quiz
-    </button>
+        <div class="linha">
+          <span></span>
+          ♥
+          <span></span>
+        </div>
 
-  </div>
+        <h1>João & Adriana</h1>
 
-  <div id="quiz">
+        <div class="coracao">
+          ♥
+        </div>
 
-    <div id="progresso"></div>
+        <p class="data">
+          03 de agosto de 2026
+        </p>
+
+        <div class="divisoria"></div>
+
+        <p class="descricao">
+          Descubra o quanto você conhece a nossa história!
+        </p>
+
+        <button onclick="iniciarQuiz()">
+          ✨ Começar o Quiz
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- QUIZ -->
+  <section id="quiz">
+
+    <p id="progresso"></p>
 
     <h2 id="pergunta"></h2>
 
     <div id="alternativas"></div>
 
-  </div>
+  </section>
 
-  <script src="script.js"></script>
+
+  <!-- RESULTADO -->
+  <section id="resultado">
+
+    <h1>Quiz finalizado ❤️</h1>
+
+    <p id="pontuacao"></p>
+
+    <button onclick="location.reload()">
+      🔄 Jogar novamente
+    </button>
+
+  </section>
+
+
+  <script>
+
+    const perguntas = [
+
+      {
+        pergunta: "Onde João e Adriana se conheceram?",
+        alternativas: ["Na escola", "Em uma festa", "No trabalho", "Pela internet"],
+        correta: 2
+      },
+
+      {
+        pergunta: "Quem costuma comer mais?",
+        alternativas: ["João", "Adriana", "Os dois por igual"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem costuma esquecer mais as coisas?",
+        alternativas: ["João", "Adriana", "Os dois poderiam disputar"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem pediu em casamento?",
+        alternativas: ["João", "Adriana", "Os dois juntos"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Qual lugar vocês mais sonham em conhecer juntos?",
+        alternativas: ["Paris", "Japão", "Nova York"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quantos filhotes vocês sonham em ter?",
+        alternativas: ["1", "2", "3"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Onde João pediu Adriana em casamento?",
+        alternativas: [
+          "Em um café",
+          "No Café Oliva",
+          "No Mais Um Café",
+          "No Ermida Dom Bosco"
+        ],
+        correta: 3
+      },
+
+      {
+        pergunta: "Quem costuma acordar mais cedo?",
+        alternativas: ["João", "Adriana", "Os dois juntos"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem faz mais piada?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem é o mais romântico?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem costuma fazer mais surpresa?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem demora mais para decidir o que vai comer?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem canta mais alto no carro?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem escolhe o filme ou série para assistir?",
+        alternativas: ["João", "Adriana", "Os dois juntos"],
+        correta: 0
+      },
+
+      {
+        pergunta: "Quem é mais competitivo?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem é mais provável de esquecer uma data importante?",
+        alternativas: ["João", "Adriana", "Os dois poderiam esquecer"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem disse 'eu te amo' primeiro?",
+        alternativas: ["Adriana", "João", "Os dois juntos"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem é mais provável de querer viajar de última hora?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem é mais provável de fazer uma compra por impulso?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 1
+      },
+
+      {
+        pergunta: "Quem é mais provável de esquecer onde colocou alguma coisa?",
+        alternativas: ["João", "Adriana", "Os dois"],
+        correta: 0
+      }
+
+    ];
+
+
+    let perguntaAtual = 0;
+    let pontuacao = 0;
+
+
+    function iniciarQuiz() {
+
+      document.getElementById("inicio").style.display = "none";
+
+      document.getElementById("quiz").style.display = "block";
+
+      document.getElementById("resultado").style.display = "none";
+
+      perguntaAtual = 0;
+      pontuacao = 0;
+
+      mostrarPergunta();
+
+    }
+
+
+    function mostrarPergunta() {
+
+      const pergunta = perguntas[perguntaAtual];
+
+      document.getElementById("progresso").textContent =
+        `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+
+      document.getElementById("pergunta").textContent =
+        pergunta.pergunta;
+
+      const alternativas =
+        document.getElementById("alternativas");
+
+      alternativas.innerHTML = "";
+
+
+      pergunta.alternativas.forEach((alternativa, indice) => {
+
+        const botao = document.createElement("button");
+
+        botao.textContent = alternativa;
+
+        botao.onclick = function() {
+
+          if (indice === pergunta.correta) {
+            pontuacao++;
+          }
+
+          perguntaAtual++;
+
+          if (perguntaAtual < perguntas.length) {
+
+            mostrarPergunta();
+
+          } else {
+
+            mostrarResultado();
+
+          }
+
+        };
+
+        alternativas.appendChild(botao);
+
+      });
+
+    }
+
+
+    function mostrarResultado() {
+
+      document.getElementById("quiz").style.display = "none";
+
+      document.getElementById("resultado").style.display = "flex";
+
+      document.getElementById("pontuacao").textContent =
+        `Você acertou ${pontuacao} de ${perguntas.length} perguntas! ❤️`;
+
+    }
+
+  </script>
 
 </body>
 </html>
