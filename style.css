@@ -5,7 +5,8 @@
 body {
   margin: 0;
   font-family: Georgia, "Times New Roman", serif;
-  background: #000;
+  background: #e8e1d2;
+  color: #3e4632;
 }
 
 /* =========================
@@ -15,13 +16,20 @@ body {
 #inicio {
   min-height: 100vh;
   width: 100%;
-  padding: 20px;
+
+  padding: 25px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  background: #1f281b;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(115, 130, 87, 0.18),
+      transparent 35%
+    ),
+    #e8e1d2;
 }
 
 .capa {
@@ -32,61 +40,98 @@ body {
   min-height: 900px;
 
   overflow: hidden;
-  border-radius: 25px;
 
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  border-radius: 28px;
+
+  background: #f4f0e8;
+
+  box-shadow:
+    0 15px 45px rgba(45, 55, 35, 0.35);
+
+  border: 1px solid rgba(91, 105, 66, 0.35);
 }
+
+/* =========================
+   FOTO
+========================= */
 
 .capa > img {
   position: absolute;
 
+  top: 0;
+  left: 0;
+
   width: 100%;
-  height: 100%;
+  height: 470px;
 
   object-fit: cover;
 
-  inset: 0;
   z-index: 1;
 }
 
-.capa::after {
+/* Degradê sobre a foto */
+
+.capa::before {
   content: "";
 
   position: absolute;
-  inset: 0;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 35, 20, 0.05),
-    rgba(15, 25, 12, 0.75)
-  );
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 470px;
 
   z-index: 2;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20, 30, 15, 0.05),
+      rgba(20, 30, 15, 0.05) 50%,
+      rgba(244, 240, 232, 0.95) 100%
+    );
 }
 
 /* =========================
-   FITA VERDE OLIVA
+   RAMOS DECORATIVOS
+========================= */
+
+.capa::after {
+  content: "🌿";
+
+  position: absolute;
+
+  z-index: 8;
+
+  top: 25px;
+  left: 15px;
+
+  font-size: 70px;
+
+  transform: rotate(-25deg);
+
+  filter: saturate(0.65);
+}
+
+/* =========================
+   RAMO DO LADO DIREITO
 ========================= */
 
 .fita {
   position: absolute;
 
-  top: 380px;
-  left: 0;
+  z-index: 8;
 
-  width: 100%;
-  height: 55px;
+  top: 25px;
+  right: 15px;
 
-  z-index: 5;
+  width: 100px;
+  height: 100px;
 
-  background: linear-gradient(
-    to bottom,
-    #9aa879,
-    #65734b,
-    #9aa879
-  );
+  background: transparent;
 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: none;
 
   display: flex;
   justify-content: center;
@@ -94,193 +139,226 @@ body {
 }
 
 .fita span {
-  position: relative;
-  z-index: 2;
+  font-size: 70px;
 
-  width: 75px;
-  height: 75px;
+  background: transparent;
 
-  border-radius: 50%;
+  width: auto;
+  height: auto;
 
-  background: #879568;
+  color: #64734a;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  filter: saturate(0.7);
 
-  font-size: 35px;
-  color: #f5f1df;
-
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transform: rotate(25deg);
 }
 
 /* =========================
-   RAMOS DECORATIVOS
-========================= */
-
-.painel::before,
-.painel::after {
-  content: "🌿";
-  position: absolute;
-
-  font-size: 55px;
-
-  color: #a5b58a;
-
-  opacity: 0.9;
-
-  z-index: 10;
-}
-
-.painel::before {
-  top: 10px;
-  left: 15px;
-
-  transform: rotate(-25deg);
-}
-
-.painel::after {
-  top: 10px;
-  right: 15px;
-
-  transform: scaleX(-1) rotate(-25deg);
-}
-
-/* =========================
-   PAINEL DA CAPA
+   PAINEL PRINCIPAL
 ========================= */
 
 .painel {
   position: absolute;
 
-  z-index: 4;
+  z-index: 5;
 
   left: 5%;
   right: 5%;
 
-  top: 405px;
+  top: 390px;
   bottom: 25px;
 
-  padding: 45px 25px 35px;
+  padding: 35px 25px;
 
-  border-radius: 30px;
+  border-radius: 28px;
 
-  background: rgba(25, 35, 20, 0.88);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(244, 240, 232, 0.98)
+    );
 
-  border: 1px solid rgba(164, 181, 132, 0.7);
+  border: 1px solid rgba(100, 115, 74, 0.35);
 
-  color: #f5f1df;
+  color: #3e4632;
 
   text-align: center;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
+  box-shadow:
+    0 8px 25px rgba(50, 60, 40, 0.18);
 }
 
+/* =========================
+   SUBTÍTULO
+========================= */
+
 .subtitulo {
-  font-size: 28px;
-  margin-bottom: 15px;
+  font-size: 25px;
+
+  color: #64734a;
+
+  margin-bottom: 10px;
+
+  font-style: italic;
 }
+
+/* =========================
+   LINHA DECORATIVA
+========================= */
 
 .linha {
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  gap: 15px;
-
-  color: #b3c18e;
-
-  font-size: 25px;
+  gap: 12px;
 
   width: 90%;
+
+  color: #a88d54;
+
+  font-size: 22px;
 }
 
 .linha span {
-  height: 2px;
+  height: 1px;
+
   flex: 1;
 
-  background: #9aa879;
+  background: #a88d54;
 }
+
+/* =========================
+   NOME DO CASAL
+========================= */
 
 .painel h1 {
-  margin: 20px 0 5px;
+  margin: 18px 0 5px;
 
-  font-size: 60px;
+  font-size: 58px;
 
-  color: #b5c28f;
+  color: #53643e;
 
-  text-shadow: 2px 3px 4px #000;
+  font-weight: normal;
+
+  letter-spacing: 1px;
+
+  text-shadow:
+    1px 1px 0 rgba(255, 255, 255, 0.8);
 }
+
+/* =========================
+   CORAÇÃO
+========================= */
 
 .coracao {
-  font-size: 35px;
+  font-size: 30px;
 
-  color: #b5c28f;
+  color: #a88d54;
+
+  margin: 5px 0;
 }
+
+/* =========================
+   DATA
+========================= */
 
 .data {
-  font-size: 25px;
+  font-size: 22px;
+
+  color: #687653;
 
   font-weight: bold;
+
+  margin: 10px 0;
 }
 
+/* =========================
+   DIVISÓRIA
+========================= */
+
 .divisoria {
-  width: 90%;
+  width: 85%;
 
   height: 1px;
 
-  background: rgba(200, 210, 175, 0.35);
+  background: #a88d54;
 
-  margin: 20px 0;
+  opacity: 0.6;
+
+  margin: 15px 0;
 }
 
+/* =========================
+   DESCRIÇÃO
+========================= */
+
 .descricao {
-  font-size: 23px;
+  font-size: 21px;
+
+  line-height: 1.4;
+
+  color: #4c5540;
+
+  max-width: 450px;
 }
 
 /* =========================
    CAMPO DO NOME
 ========================= */
 
-#nomeParticipante {
+#nome {
   width: 90%;
+
   max-width: 450px;
 
-  padding: 15px 18px;
+  padding: 16px 20px;
 
-  margin: 15px 0;
+  margin: 10px 0 15px;
 
-  border-radius: 15px;
+  border-radius: 14px;
 
-  border: 2px solid #aab889;
+  border: 1px solid #9aa582;
 
-  background: rgba(255, 255, 255, 0.95);
+  background: #fffdf8;
 
-  color: #26301f;
+  color: #3e4632;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 20px;
+  font-size: 19px;
 
   text-align: center;
 
   outline: none;
+
+  box-shadow:
+    inset 0 2px 5px rgba(50, 60, 40, 0.08);
 }
 
-#nomeParticipante::placeholder {
-  color: #68705f;
+#nome::placeholder {
+  color: #899377;
+
+  font-style: italic;
 }
 
-#nomeParticipante:focus {
-  border-color: #c4d29d;
+#nome:focus {
+  border-color: #64734a;
 
-  box-shadow: 0 0 10px rgba(170, 184, 137, 0.6);
+  box-shadow:
+    0 0 0 3px rgba(100, 115, 74, 0.18);
 }
 
 /* =========================
-   BOTÕES
+   BOTÃO
 ========================= */
 
 .painel button {
@@ -288,37 +366,42 @@ body {
 
   max-width: 450px;
 
-  padding: 18px;
+  padding: 17px;
 
-  border-radius: 18px;
+  margin-top: 8px;
 
-  border: 2px solid #aab889;
+  border-radius: 14px;
 
-  background: linear-gradient(
-    to bottom,
-    #879968,
-    #596942
-  );
+  border: 1px solid #53643e;
 
-  color: #fff;
+  background:
+    linear-gradient(
+      135deg,
+      #6f8052,
+      #53643e
+    );
+
+  color: white;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 25px;
+  font-size: 21px;
 
   font-weight: bold;
 
   cursor: pointer;
 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 5px 12px rgba(50, 60, 40, 0.3);
 
   transition: 0.3s;
 }
 
 .painel button:hover {
-  transform: scale(1.04);
+  transform: translateY(-2px);
 
-  background: #718354;
+  box-shadow:
+    0 8px 18px rgba(50, 60, 40, 0.4);
 }
 
 /* =========================
@@ -334,14 +417,14 @@ body {
 
   padding: 40px 20px;
 
-  color: #f5f1df;
+  color: white;
 
   text-align: center;
 
   background-image:
     linear-gradient(
-      rgba(25, 40, 20, 0.78),
-      rgba(15, 25, 12, 0.88)
+      rgba(42, 52, 30, 0.72),
+      rgba(35, 45, 25, 0.86)
     ),
     url("./IMG_2431.png");
 
@@ -363,7 +446,7 @@ body {
 
   margin-bottom: 40px;
 
-  color: #b8c795;
+  color: #d9c994;
 }
 
 /* =========================
@@ -379,7 +462,8 @@ body {
 
   margin: 40px auto;
 
-  text-shadow: 2px 2px 5px #000;
+  text-shadow:
+    2px 2px 5px #000;
 }
 
 /* =========================
@@ -403,21 +487,22 @@ body {
 
   padding: 18px;
 
-  border: 2px solid rgba(172, 190, 140, 0.8);
+  border: 2px solid rgba(190, 205, 160, 0.8);
 
-  border-radius: 18px;
+  border-radius: 15px;
 
   font-family: Georgia, "Times New Roman", serif;
 
   font-size: 22px;
 
-  color: #fff;
+  color: white;
 
   cursor: pointer;
 
-  background: rgba(32, 45, 25, 0.88);
+  background: rgba(48, 60, 35, 0.85);
 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    0 5px 15px rgba(0, 0, 0, 0.4);
 
   transition: 0.3s;
 }
@@ -425,11 +510,11 @@ body {
 #alternativas button:hover {
   transform: scale(1.03);
 
-  background: #718354;
+  background: #64734a;
 }
 
 /* =========================
-   RESULTADO FINAL
+   RESULTADO
 ========================= */
 
 #resultado {
@@ -447,12 +532,12 @@ body {
 
   text-align: center;
 
-  color: #f5f1df;
+  color: white;
 
   background-image:
     linear-gradient(
-      rgba(25, 40, 20, 0.78),
-      rgba(15, 25, 12, 0.88)
+      rgba(42, 52, 30, 0.72),
+      rgba(35, 45, 25, 0.86)
     ),
     url("./IMG_2431.png");
 
@@ -466,9 +551,10 @@ body {
 #resultado h1 {
   font-size: 45px;
 
-  color: #b8c795;
+  color: #d9c994;
 
-  text-shadow: 2px 2px 5px #000;
+  text-shadow:
+    2px 2px 5px #000;
 }
 
 #resultado p {
@@ -482,7 +568,7 @@ body {
 #resultado button {
   padding: 16px 25px;
 
-  border: 2px solid #aab889;
+  border: 2px solid #aebd8d;
 
   border-radius: 15px;
 
@@ -492,7 +578,7 @@ body {
 
   color: white;
 
-  background: #65764a;
+  background: #64734a;
 
   cursor: pointer;
 }
@@ -513,23 +599,43 @@ body {
     border-radius: 0;
   }
 
+  .capa > img {
+    height: 440px;
+  }
+
+  .capa::before {
+    height: 440px;
+  }
+
+  .capa::after {
+    font-size: 55px;
+
+    top: 15px;
+    left: 5px;
+  }
+
   .fita {
-    top: 38%;
+    top: 15px;
+    right: 5px;
+  }
+
+  .fita span {
+    font-size: 55px;
   }
 
   .painel {
-    top: 41%;
+    top: 365px;
 
     left: 3%;
     right: 3%;
 
     bottom: 15px;
 
-    padding: 30px 15px;
+    padding: 28px 15px;
   }
 
   .subtitulo {
-    font-size: 21px;
+    font-size: 20px;
   }
 
   .painel h1 {
@@ -537,21 +643,23 @@ body {
   }
 
   .data {
-    font-size: 19px;
-  }
-
-  .descricao {
     font-size: 18px;
   }
 
-  #nomeParticipante {
+  .descricao {
+    font-size: 17px;
+  }
+
+  #nome {
     font-size: 17px;
 
-    padding: 13px;
+    padding: 14px;
   }
 
   .painel button {
-    font-size: 19px;
+    font-size: 18px;
+
+    padding: 15px;
   }
 
   #pergunta {
