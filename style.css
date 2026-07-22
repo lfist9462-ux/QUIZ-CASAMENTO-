@@ -1,7 +1,3 @@
-/* =========================================
-   CONFIGURAÇÃO GERAL
-========================================= */
-
 * {
   box-sizing: border-box;
 }
@@ -10,76 +6,73 @@ html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
   min-height: 100%;
 }
 
 body {
+  background: #26321d;
   font-family: Georgia, "Times New Roman", serif;
-  background: #182014;
-  color: #4b542d;
 }
 
 
-/* =========================================
+/* =========================
    TELA INICIAL
-========================================= */
+========================= */
 
 #inicio {
-  min-height: 100vh;
   width: 100%;
-  padding: 0;
+  min-height: 100vh;
 
   display: flex;
   justify-content: center;
-  align-items: flex-start;
 
-  background: #182014;
+  background: #26321d;
 }
 
 
-/* =========================================
-   CAPA PRINCIPAL
-========================================= */
+/* =========================
+   CONTAINER DA CAPA
+========================= */
 
 .capa {
   position: relative;
 
   width: 100%;
-  max-width: 1024px;
+  max-width: 650px;
 
   min-height: 100vh;
 
   overflow: hidden;
 
-  background: #eee9d9;
-
-  border-left: 2px solid #737b3e;
-  border-right: 2px solid #737b3e;
+  background: #26321d;
 }
 
 
-/* =========================================
+/* =========================
    FOTO NO TOPO
-========================================= */
+========================= */
 
 .capa > img {
-  position: absolute;
-
-  top: 0;
-  left: 0;
+  display: block;
 
   width: 100%;
+
   height: 430px;
 
   object-fit: cover;
+
+  object-position: center;
+
+  position: relative;
 
   z-index: 1;
 }
 
 
-/* =========================================
-   ESCURECIMENTO SUAVE DA FOTO
-========================================= */
+/* =========================
+   SOMBRA SUAVE NA FOTO
+========================= */
 
 .capa::before {
   content: "";
@@ -95,16 +88,18 @@ body {
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.05),
-    rgba(20, 30, 15, 0.35)
+    rgba(38, 50, 29, 0.45)
   );
 
   z-index: 2;
+
+  pointer-events: none;
 }
 
 
-/* =========================================
-   FUNDO VERDE LATERAL
-========================================= */
+/* =========================
+   FUNDO VERDE OLIVA
+========================= */
 
 .capa::after {
   content: "";
@@ -113,122 +108,116 @@ body {
 
   top: 430px;
   bottom: 0;
+
   left: 0;
   right: 0;
 
-  background:
-    linear-gradient(
-      to right,
-      rgba(46, 62, 25, 0.95),
-      rgba(57, 72, 32, 0.95),
-      rgba(46, 62, 25, 0.95)
-    );
+  background: #26321d;
 
-  z-index: 2;
+  z-index: 0;
 }
 
 
-/* =========================================
+/* =========================
    FITA VERDE
-========================================= */
+========================= */
 
 .fita {
   position: absolute;
 
   top: 390px;
+
   left: 0;
 
   width: 100%;
-  height: 100px;
+
+  height: 80px;
+
+  background: #7b8b4d;
 
   z-index: 5;
 
-  background:
-    linear-gradient(
-      to bottom,
-      #7b8c4e,
-      #65753d,
-      #7f9053
-    );
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
 
   box-shadow:
-    0 6px 15px rgba(0, 0, 0, 0.35);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
 
-/* =========================================
-   CÍRCULO DO CORAÇÃO
-========================================= */
+/* =========================
+   CORAÇÃO
+========================= */
 
 .fita span {
-  width: 135px;
-  height: 135px;
+  width: 105px;
+  height: 105px;
 
   border-radius: 50%;
 
+  background: #f4f0e3;
+
+  border: 4px solid #68763d;
+
   display: flex;
-  justify-content: center;
+
   align-items: center;
 
-  background: #f2eddf;
+  justify-content: center;
 
-  border: 5px solid #78844a;
+  color: #66753c;
 
-  color: #65733b;
-
-  font-size: 70px;
+  font-size: 55px;
 
   box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.3);
+    0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 
-/* =========================================
-   PAINEL CENTRAL
-========================================= */
+/* =========================
+   PAINEL DO QUIZ
+========================= */
 
 .painel {
   position: relative;
 
   z-index: 4;
 
-  margin-top: 455px;
+  margin-top: 0;
 
-  margin-left: 8%;
-  margin-right: 8%;
+  margin-left: 5%;
 
-  min-height: calc(100vh - 455px);
+  margin-right: 5%;
 
-  padding: 80px 8% 80px;
+  padding: 85px 25px 50px;
 
-  text-align: center;
+  min-height: 600px;
 
-  background:
-    linear-gradient(
-      rgba(246, 242, 228, 0.96),
-      rgba(246, 242, 228, 0.96)
-    );
+  background: #f3efe1;
 
   border-radius: 35px 35px 0 0;
 
-  border: 2px solid #8a945c;
+  border: 2px solid #89965d;
 
-  box-shadow:
-    0 -8px 25px rgba(0, 0, 0, 0.18);
+  text-align: center;
 
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
+
+  box-shadow:
+    0 -5px 20px rgba(0, 0, 0, 0.25);
 }
 
 
-/* =========================================
-   RAMOS DECORATIVOS
-========================================= */
+/* =========================
+   DECORAÇÃO DOS RAMOS
+========================= */
 
 .painel::before,
 .painel::after {
@@ -236,61 +225,55 @@ body {
 
   position: absolute;
 
-  color: #7a864a;
+  top: 25px;
 
-  font-size: 85px;
+  font-size: 60px;
 
-  opacity: 0.8;
+  color: #78864d;
 }
 
 .painel::before {
-  top: 20px;
   left: 25px;
 
   transform: rotate(-35deg);
 }
 
 .painel::after {
-  top: 20px;
   right: 25px;
 
-  transform: rotate(35deg) scaleX(-1);
+  transform: scaleX(-1) rotate(-35deg);
 }
 
 
-/* =========================================
+/* =========================
    SUBTÍTULO
-========================================= */
+========================= */
 
 .subtitulo {
-  font-size: 30px;
+  font-size: 24px;
 
-  margin-bottom: 20px;
+  color: #586334;
 
-  color: #596333;
-
-  text-shadow:
-    1px 1px 1px rgba(255, 255, 255, 0.8);
+  margin-bottom: 18px;
 }
 
 
-/* =========================================
-   LINHAS DECORATIVAS
-========================================= */
+/* =========================
+   LINHAS
+========================= */
 
 .linha {
-  width: 80%;
+  width: 85%;
 
   display: flex;
 
   align-items: center;
-  justify-content: center;
 
-  gap: 20px;
+  gap: 15px;
 
-  color: #7d884e;
+  color: #78864b;
 
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .linha span {
@@ -298,236 +281,192 @@ body {
 
   flex: 1;
 
-  background: #9ba36c;
+  background: #9da576;
 }
 
 
-/* =========================================
-   NOME DO CASAL
-========================================= */
+/* =========================
+   NOME
+========================= */
 
 .painel h1 {
-  margin: 35px 0 10px;
+  margin: 25px 0 5px;
 
-  font-size: clamp(42px, 7vw, 85px);
+  color: #53602f;
 
-  color: #596333;
-
-  font-weight: bold;
+  font-size: clamp(40px, 8vw, 65px);
 
   text-shadow:
-    2px 2px 0 #d9d5bd;
+    1px 2px 1px #d4d0bb;
 }
 
 
-/* =========================================
+/* =========================
    CORAÇÃO
-========================================= */
+========================= */
 
 .coracao {
-  font-size: 45px;
+  color: #718043;
 
-  color: #758344;
+  font-size: 35px;
 
-  margin: 5px 0 20px;
+  margin: 5px 0 15px;
 }
 
 
-/* =========================================
+/* =========================
    DATA
-========================================= */
+========================= */
 
 .data {
-  font-size: 28px;
+  color: #555f32;
+
+  font-size: 22px;
 
   font-weight: bold;
-
-  color: #555e31;
 }
 
 
-/* =========================================
+/* =========================
    DIVISÓRIA
-========================================= */
+========================= */
 
 .divisoria {
-  width: 70%;
+  width: 75%;
 
   height: 2px;
 
-  margin: 30px 0;
+  margin: 25px 0;
 
-  background: #aaa77a;
+  background: #aaa879;
 }
 
 
-/* =========================================
+/* =========================
    DESCRIÇÃO
-========================================= */
+========================= */
 
 .descricao {
-  max-width: 650px;
+  max-width: 500px;
 
-  font-size: 27px;
+  color: #5b6540;
 
-  line-height: 1.5;
+  font-size: 21px;
 
-  color: #5d6541;
+  line-height: 1.4;
 }
 
 
-/* =========================================
+/* =========================
    CAMPO DO NOME
-========================================= */
+========================= */
 
 #nomeJogador {
   width: 90%;
-  max-width: 650px;
 
-  padding: 22px 25px;
+  padding: 18px;
 
-  margin: 25px 0 20px;
+  margin: 20px 0;
 
-  border-radius: 25px;
+  border-radius: 18px;
 
-  border: 3px solid #8c9960;
+  border: 3px solid #89965d;
 
-  background: #f5f3eb;
+  background: #faf9f4;
 
-  color: #58623a;
+  color: #596438;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 25px;
+  font-size: 21px;
 
   text-align: center;
 
   outline: none;
-
-  box-shadow:
-    inset 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 #nomeJogador::placeholder {
-  color: #858a77;
+  color: #858879;
 
   font-style: italic;
 }
 
-#nomeJogador:focus {
-  border-color: #65733b;
 
-  box-shadow:
-    0 0 0 4px rgba(119, 137, 73, 0.2);
-}
-
-
-/* =========================================
-   BOTÃO COMEÇAR
-========================================= */
+/* =========================
+   BOTÃO
+========================= */
 
 .painel button {
   width: 90%;
-  max-width: 650px;
 
-  padding: 22px;
+  padding: 18px;
 
-  border-radius: 28px;
+  border-radius: 22px;
 
-  border: 4px solid #a8a56e;
+  border: 3px solid #a39d65;
 
-  background:
-    linear-gradient(
-      to bottom,
-      #80924e,
-      #596d2e
-    );
+  background: #647936;
 
   color: white;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 28px;
+  font-size: 23px;
 
   font-weight: bold;
 
   cursor: pointer;
 
   box-shadow:
-    0 6px 15px rgba(0, 0, 0, 0.35);
-
-  transition: 0.3s;
-}
-
-.painel button:hover {
-  transform: scale(1.03);
+    0 5px 12px rgba(0, 0, 0, 0.35);
 }
 
 
-/* =========================================
+/* =========================
    QUIZ
-========================================= */
+========================= */
 
 #quiz {
   display: none;
 
   min-height: 100vh;
 
-  padding: 50px 20px;
-
-  color: #f5f1e4;
+  padding: 40px 20px;
 
   text-align: center;
 
+  color: white;
+
   background:
     linear-gradient(
-      rgba(25, 35, 18, 0.86),
-      rgba(25, 35, 18, 0.95)
+      rgba(38, 50, 29, 0.88),
+      rgba(38, 50, 29, 0.95)
     ),
     url("./IMG_2431.png");
 
   background-size: cover;
 
   background-position: center;
-
-  background-attachment: fixed;
 }
 
-
-/* =========================================
-   PROGRESSO
-========================================= */
 
 #progresso {
-  font-size: 24px;
+  color: #c3cd9c;
 
-  color: #c2c994;
-
-  margin-bottom: 45px;
+  font-size: 22px;
 }
 
 
-/* =========================================
-   PERGUNTA
-========================================= */
-
 #pergunta {
-  max-width: 850px;
+  max-width: 800px;
 
   margin: 40px auto;
 
-  font-size: clamp(28px, 5vw, 48px);
+  font-size: 36px;
 
   line-height: 1.3;
-
-  text-shadow:
-    2px 2px 5px #000;
 }
 
-
-/* =========================================
-   ALTERNATIVAS
-========================================= */
 
 #alternativas {
   display: flex;
@@ -536,49 +475,43 @@ body {
 
   align-items: center;
 
-  gap: 18px;
+  gap: 15px;
 }
+
 
 #alternativas button {
   width: 100%;
-  max-width: 650px;
 
-  padding: 20px;
+  max-width: 600px;
 
-  border-radius: 20px;
+  padding: 18px;
 
-  border: 2px solid #9da96d;
+  border-radius: 18px;
 
-  background: rgba(35, 48, 24, 0.9);
+  border: 2px solid #9ba86e;
+
+  background: #344326;
 
   color: white;
 
   font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 23px;
+  font-size: 21px;
 
   cursor: pointer;
-
-  transition: 0.3s;
-}
-
-#alternativas button:hover {
-  transform: scale(1.03);
-
-  background: #71833e;
 }
 
 
-/* =========================================
+/* =========================
    RESULTADO
-========================================= */
+========================= */
 
 #resultado {
   display: none;
 
   min-height: 100vh;
 
-  padding: 40px 20px;
+  padding: 30px 20px;
 
   flex-direction: column;
 
@@ -588,72 +521,42 @@ body {
 
   text-align: center;
 
-  color: #f4f0df;
+  color: white;
 
-  background:
-    linear-gradient(
-      rgba(25, 35, 18, 0.88),
-      rgba(25, 35, 18, 0.95)
-    ),
-    url("./IMG_2431.png");
-
-  background-size: cover;
-
-  background-position: center;
+  background: #26321d;
 }
 
 #resultado h1 {
-  font-size: clamp(35px, 6vw, 60px);
+  color: #c5d09c;
 
-  color: #c2cc94;
+  font-size: 40px;
 }
 
 #resultado p {
-  max-width: 750px;
+  max-width: 600px;
 
-  font-size: 28px;
+  font-size: 24px;
 
   line-height: 1.5;
 }
 
-#resultado button {
-  padding: 18px 30px;
 
-  border-radius: 20px;
-
-  border: 3px solid #a6ae78;
-
-  background: #657b36;
-
-  color: white;
-
-  font-family: Georgia, "Times New Roman", serif;
-
-  font-size: 22px;
-
-  cursor: pointer;
-}
-
-
-/* =========================================
+/* =========================
    CELULAR
-========================================= */
+========================= */
 
 @media (max-width: 600px) {
-
-  #inicio {
-    width: 100%;
-  }
 
   .capa {
     width: 100%;
 
-    min-height: 100vh;
-
-    border: none;
+    max-width: none;
   }
 
-  .capa > img,
+  .capa > img {
+    height: 300px;
+  }
+
   .capa::before {
     height: 300px;
   }
@@ -663,91 +566,62 @@ body {
   }
 
   .fita {
-    top: 270px;
+    top: 265px;
 
-    height: 75px;
+    height: 70px;
   }
 
   .fita span {
-    width: 100px;
-    height: 100px;
+    width: 95px;
 
-    font-size: 52px;
+    height: 95px;
+
+    font-size: 48px;
   }
 
   .painel {
-    margin-top: 335px;
-
     margin-left: 4%;
+
     margin-right: 4%;
 
-    min-height: calc(100vh - 335px);
+    padding: 75px 18px 45px;
 
-    padding: 65px 20px 50px;
-  }
-
-  .painel::before,
-  .painel::after {
-    font-size: 55px;
+    min-height: 600px;
   }
 
   .subtitulo {
-    font-size: 22px;
-  }
-
-  .linha {
-    width: 90%;
-
-    font-size: 22px;
-  }
-
-  .painel h1 {
-    font-size: 42px;
-
-    margin-top: 25px;
-  }
-
-  .data {
     font-size: 21px;
   }
 
-  .descricao {
+  .painel h1 {
+    font-size: 40px;
+  }
+
+  .data {
     font-size: 20px;
+  }
+
+  .descricao {
+    font-size: 19px;
   }
 
   #nomeJogador {
     width: 100%;
 
-    padding: 18px;
-
-    font-size: 21px;
+    font-size: 19px;
   }
 
   .painel button {
     width: 100%;
 
-    padding: 18px;
-
-    font-size: 21px;
-  }
-
-  #quiz {
-    padding: 35px 15px;
+    font-size: 20px;
   }
 
   #pergunta {
-    font-size: 30px;
+    font-size: 29px;
   }
 
   #alternativas button {
     font-size: 19px;
-  }
-
-  #resultado h1 {
-    font-size: 36px;
-  }
-
-  #resultado p {
-    font-size: 21px;
   }
 }
