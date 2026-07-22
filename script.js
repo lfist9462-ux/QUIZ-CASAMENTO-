@@ -216,21 +216,37 @@ const perguntas = [
       "Os dois disseram juntos",
       "Ninguém lembra mais 😂"
     ],
-    correta: 1
+        correta: 1
   }
 ];
+const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbzz43vR1eOEqMTV0GddkVc26FrZDSrdmqOyBFGZWhQoWNQrkHWZjJFJNr1aNd1Bd886/exec";
 
 let perguntaAtual = 0;
 let pontuacao = 0;
+let nomeJogador = "";
 
 function iniciarQuiz() {
-  document.getElementById("inicio").style.display = "none";
-  document.getElementById("quiz").style.display = "block";
 
-  perguntaAtual = 0;
-  pontuacao = 0;
+  if(localStorage.getItem("quizRespondido")=="sim"){
+    alert("Você já respondeu este quiz ❤️");
+    return;
+  }
+
+  nomeJogador=document.getElementById("nomeJogador").value.trim();
+
+  if(nomeJogador==""){
+    alert("Digite seu nome.");
+    return;
+  }
+
+  document.getElementById("inicio").style.display="none";
+  document.getElementById("quiz").style.display="block";
+
+  perguntaAtual=0;
+  pontuacao=0;
 
   mostrarPergunta();
+
 }
 
 function mostrarPergunta() {
@@ -268,16 +284,31 @@ function mostrarPergunta() {
     "Pergunta " + (perguntaAtual + 1) + " de " + perguntas.length;
 }
 
-function mostrarResultado() {
-  document.getElementById("quiz").innerHTML = `
-    <h2>🎉 Quiz finalizado!</h2>
+function mostrarResultado(){
 
-    <p>Você acertou:</p>
+  localStorage.setItem("quizRespondido","sim");
 
-    <h1>${pontuacao} de ${perguntas.length}</h1>
+  fetch(URL_SCRIPT,{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({
+      nome:nomeJogador,
+      pontuacao:pontuacao,
+      total:perguntas.length
+    })
+  }).catch(()=>{});
 
-    <button onclick="location.reload()">
-      Jogar novamente
-    </button>
+  document.getElementById("quiz").innerHTML=`
+    <div style="text-align:center;padding:30px">
+      <h2>❤️ Obrigado por participar!</h2>
+
+      <h1>${pontuacao}/${perguntas.length}</h1>
+
+      <h3>${nomeJogador}</h3>
+
+      <p>Seu resultado foi registrado no ranking.</p>
+    </div>
   `;
 }
