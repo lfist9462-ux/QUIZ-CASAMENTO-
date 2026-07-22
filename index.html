@@ -20,15 +20,12 @@
 
     <div class="capa">
 
-      <!-- FOTO DE FUNDO -->
       <img src="IMG_2431.png" alt="João e Adriana">
 
-      <!-- FITA ROSA -->
       <div class="fita">
         <span>♥</span>
       </div>
 
-      <!-- PAINEL -->
       <div class="painel">
 
         <div class="subtitulo">
@@ -56,6 +53,15 @@
         <p class="descricao">
           Descubra o quanto você conhece a nossa história!
         </p>
+
+        <!-- CAMPO DO NOME -->
+
+        <input
+          type="text"
+          id="nomeParticipante"
+          placeholder="Digite seu nome"
+          maxlength="40"
+        >
 
         <button onclick="iniciarQuiz()">
           ✨ Começar o Quiz
@@ -96,13 +102,21 @@
     <p id="pontuacao"></p>
 
     <button onclick="voltarInicio()">
-      🔄 Jogar novamente
+      🔄 Voltar ao início
     </button>
 
   </section>
 
 
   <script>
+
+    /* =========================
+       LINK DO GOOGLE APPS SCRIPT
+    ========================== */
+
+    const URL_RANKING =
+      "https://script.google.com/macros/s/AKfycbzuW5IcXg22mawTj49YJ2dFfQI57SdLY7d0jvQ_U3CdHD1Xph2uF8ZVJ3iSk8_TnbMR/exec";
+
 
     /* =========================
        PERGUNTAS
@@ -162,7 +176,7 @@
       },
 
       {
-        pergunta: "Quantos filhotes vocês sonham em ter?",
+        pergunta: "Quantos filhos vocês sonham em ter?",
         alternativas: [
           "1",
           "2",
@@ -323,6 +337,8 @@
 
     let pontuacao = 0;
 
+    let nomeParticipante = "";
+
 
     /* =========================
        INICIAR QUIZ
@@ -330,15 +346,56 @@
 
     function iniciarQuiz() {
 
-      document.getElementById("inicio").style.display = "none";
+      const nome =
+        document
+          .getElementById("nomeParticipante")
+          .value
+          .trim();
 
-      document.getElementById("quiz").style.display = "block";
 
-      document.getElementById("resultado").style.display = "none";
+      if (nome === "") {
+
+        alert("Por favor, digite seu nome antes de começar ❤️");
+
+        return;
+
+      }
+
+
+      // VERIFICA SE ESTE CELULAR JÁ RESPONDEU
+
+      if (
+        localStorage.getItem("quizCasamentoRespondido") === "true"
+      ) {
+
+        alert(
+          "Este celular já respondeu ao quiz ❤️"
+        );
+
+        return;
+
+      }
+
+
+      nomeParticipante = nome;
+
+
+      document.getElementById("inicio").style.display =
+        "none";
+
+
+      document.getElementById("quiz").style.display =
+        "block";
+
+
+      document.getElementById("resultado").style.display =
+        "none";
+
 
       perguntaAtual = 0;
 
       pontuacao = 0;
+
 
       mostrarPergunta();
 
@@ -351,16 +408,21 @@
 
     function mostrarPergunta() {
 
-      const pergunta = perguntas[perguntaAtual];
+      const pergunta =
+        perguntas[perguntaAtual];
+
 
       document.getElementById("progresso").textContent =
         `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
 
+
       document.getElementById("pergunta").textContent =
         pergunta.pergunta;
 
+
       const alternativas =
         document.getElementById("alternativas");
+
 
       alternativas.innerHTML = "";
 
@@ -368,39 +430,47 @@
       pergunta.alternativas.forEach(
         (alternativa, indice) => {
 
+
           const botao =
             document.createElement("button");
+
 
           botao.textContent =
             alternativa;
 
 
-          botao.onclick = function() {
-
-            if (indice === pergunta.correta) {
-
-              pontuacao++;
-
-            }
+          botao.onclick =
+            function () {
 
 
-            perguntaAtual++;
+              if (
+                indice === pergunta.correta
+              ) {
+
+                pontuacao++;
+
+              }
 
 
-            if (
-              perguntaAtual <
-              perguntas.length
-            ) {
+              perguntaAtual++;
 
-              mostrarPergunta();
 
-            } else {
+              if (
+                perguntaAtual <
+                perguntas.length
+              ) {
 
-              mostrarResultado();
+                mostrarPergunta();
 
-            }
+              }
 
-          };
+              else {
+
+                mostrarResultado();
+
+              }
+
+            };
 
 
           alternativas.appendChild(botao);
@@ -412,14 +482,66 @@
 
 
     /* =========================
+       ENVIAR RESULTADO PARA PLANILHA
+    ========================== */
+
+    function enviarResultado() {
+
+      fetch(
+        URL_RANKING,
+        {
+
+          method: "POST",
+
+          mode: "no-cors",
+
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+
+          body: JSON.stringify({
+
+            nome: nomeParticipante,
+
+            pontuacao: pontuacao,
+
+            total: perguntas.length
+
+          })
+
+        }
+
+      );
+
+    }
+
+
+    /* =========================
        RESULTADO
     ========================== */
 
     function mostrarResultado() {
 
-      document.getElementById("quiz").style.display = "none";
 
-      document.getElementById("resultado").style.display = "flex";
+      // SALVA QUE ESTE CELULAR JÁ RESPONDEU
+
+      localStorage.setItem(
+        "quizCasamentoRespondido",
+        "true"
+      );
+
+
+      // ENVIA PARA A PLANILHA
+
+      enviarResultado();
+
+
+      document.getElementById("quiz").style.display =
+        "none";
+
+
+      document.getElementById("resultado").style.display =
+        "flex";
 
 
       let titulo = "";
@@ -430,52 +552,68 @@
       if (pontuacao === 20) {
 
         titulo =
-          "Você acertou 20/20! 😍❤️";
+          `${nomeParticipante}, você acertou 20/20! 😍❤️`;
+
 
         mensagem =
           "Parabéns! Você conhece nossa história de um jeito incrível! Já pode dizer que é especialista em João & Adriana! 💍✨";
 
 
-      } else if (pontuacao >= 17) {
+      }
+
+      else if (pontuacao >= 17) {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 🥰`;
+          `${nomeParticipante}, você acertou ${pontuacao}/20! 🥰`;
+
 
         mensagem =
           "Uau! Você conhece muito bem a nossa história! Está quase no nível especialista em João & Adriana! ❤️✨";
 
 
-      } else if (pontuacao >= 14) {
+      }
+
+      else if (pontuacao >= 14) {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 😍`;
+          `${nomeParticipante}, você acertou ${pontuacao}/20! 😍`;
+
 
         mensagem =
           "Muito bem! Você conhece bastante a nossa história e sabe muitos detalhes sobre nós! ❤️";
 
 
-      } else if (pontuacao >= 10) {
+      }
+
+      else if (pontuacao >= 10) {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 😊`;
+          `${nomeParticipante}, você acertou ${pontuacao}/20! 😊`;
+
 
         mensagem =
           "Foi bem! Mas ainda temos algumas histórias e detalhes para você descobrir sobre nós! ❤️";
 
 
-      } else if (pontuacao >= 5) {
+      }
+
+      else if (pontuacao >= 5) {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 😄`;
+          `${nomeParticipante}, você acertou ${pontuacao}/20! 😄`;
+
 
         mensagem =
           "Ainda temos muito para conversar! Parece que precisamos contar nossa história com mais detalhes! ❤️";
 
 
-      } else {
+      }
+
+      else {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 😂`;
+          `${nomeParticipante}, você acertou ${pontuacao}/20! 😂`;
+
 
         mensagem =
           "Eita! Parece que você precisa conhecer melhor a história de João & Adriana! Mas ainda dá tempo de aprender tudo! ❤️";
@@ -485,27 +623,35 @@
 
       document.getElementById(
         "tituloResultado"
-      ).textContent = titulo;
+      ).textContent =
+        titulo;
 
 
       document.getElementById(
         "pontuacao"
-      ).textContent = mensagem;
+      ).textContent =
+        mensagem;
 
     }
 
 
     /* =========================
-       JOGAR NOVAMENTE
+       VOLTAR AO INÍCIO
     ========================== */
 
     function voltarInicio() {
 
-      document.getElementById("resultado").style.display = "none";
+      document.getElementById("resultado").style.display =
+        "none";
 
-      document.getElementById("quiz").style.display = "none";
 
-      document.getElementById("inicio").style.display = "flex";
+      document.getElementById("quiz").style.display =
+        "none";
+
+
+      document.getElementById("inicio").style.display =
+        "flex";
+
 
       perguntaAtual = 0;
 
