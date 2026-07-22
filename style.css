@@ -1,3 +1,7 @@
+/* =========================
+   CONFIGURAÇÃO GERAL
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -6,281 +10,403 @@ html,
 body {
   margin: 0;
   padding: 0;
-
-  width: 100%;
   min-height: 100%;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  background: #30361b;
 }
 
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #182014;
+  color: #f5f0df;
+}
 
 /* =========================
    TELA INICIAL
 ========================= */
 
 #inicio {
-
   min-height: 100vh;
-
   width: 100%;
-
   padding: 0;
 
   display: flex;
-
   justify-content: center;
-
   align-items: center;
 
-  background: #30361b;
-
+  background: #182014;
 }
 
-
 /* =========================
-   CAPA
+   CAPA PRINCIPAL
 ========================= */
 
 .capa {
-
   position: relative;
 
   width: 100%;
-
-  max-width: 1024px;
-
-  min-height: 1500px;
+  max-width: 650px;
+  min-height: 100vh;
 
   overflow: hidden;
 
   background-image:
-
-    url("capa-quiz.jpg");
+    linear-gradient(
+      rgba(25, 35, 20, 0.20),
+      rgba(25, 35, 20, 0.45)
+    ),
+    url("./IMG_2431.png");
 
   background-size: cover;
-
   background-position: center top;
-
   background-repeat: no-repeat;
 
+  border: 2px solid #687a3e;
+
+  box-shadow:
+    inset 0 0 0 8px rgba(80, 96, 40, 0.35),
+    0 0 30px rgba(0, 0, 0, 0.7);
 }
 
-
 /* =========================
-   ARTE TRANSPARENTE
+   MOLDURA INTERNA
 ========================= */
 
-.arte-capa {
+.capa::before {
+  content: "";
 
   position: absolute;
+  inset: 18px;
 
-  inset: 0;
+  border: 2px solid rgba(106, 120, 54, 0.8);
+
+  border-radius: 25px;
 
   pointer-events: none;
 
+  z-index: 10;
 }
 
+/* =========================
+   FITA VERDE
+========================= */
+
+.fita {
+  position: absolute;
+
+  top: 34%;
+
+  left: 0;
+
+  width: 100%;
+  height: 75px;
+
+  z-index: 3;
+
+  background:
+    linear-gradient(
+      to bottom,
+      #899d59,
+      #63763d,
+      #899d59
+    );
+
+  box-shadow:
+    0 5px 12px rgba(0, 0, 0, 0.5);
+}
+
+.fita span {
+  position: absolute;
+
+  top: -30px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 100px;
+  height: 100px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f5f0df;
+
+  border: 4px solid #6c793d;
+
+  color: #66753c;
+
+  font-size: 55px;
+
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* =========================
+   PAINEL CENTRAL
+========================= */
+
+.painel {
+  position: absolute;
+
+  z-index: 4;
+
+  top: 38%;
+
+  left: 8%;
+  right: 8%;
+
+  bottom: 35px;
+
+  padding: 65px 35px 35px;
+
+  border-radius: 35px;
+
+  background:
+    linear-gradient(
+      rgba(248, 244, 229, 0.96),
+      rgba(239, 235, 216, 0.96)
+    );
+
+  border: 2px solid #9a965d;
+
+  color: #4b5427;
+
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.45);
+}
+
+/* =========================
+   SUBTÍTULO
+========================= */
+
+.subtitulo {
+  font-size: 27px;
+
+  margin-bottom: 15px;
+
+  color: #4d572a;
+}
+
+/* =========================
+   LINHAS
+========================= */
+
+.linha {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 15px;
+
+  width: 90%;
+
+  color: #768747;
+
+  font-size: 25px;
+}
+
+.linha span {
+  height: 2px;
+
+  flex: 1;
+
+  background: #768747;
+}
+
+/* =========================
+   TÍTULO
+========================= */
+
+.painel h1 {
+  margin: 25px 0 10px;
+
+  font-size: 58px;
+
+  color: #4d5728;
+
+  text-shadow:
+    1px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   CORAÇÃO
+========================= */
+
+.coracao {
+  font-size: 38px;
+
+  color: #738343;
+
+  margin: 5px 0;
+}
+
+/* =========================
+   DATA
+========================= */
+
+.data {
+  font-size: 25px;
+
+  font-weight: bold;
+
+  color: #4d5728;
+}
+
+/* =========================
+   DIVISÓRIA
+========================= */
+
+.divisoria {
+  width: 80%;
+
+  height: 2px;
+
+  background: #aaa36b;
+
+  margin: 20px 0;
+}
+
+/* =========================
+   DESCRIÇÃO
+========================= */
+
+.descricao {
+  font-size: 23px;
+
+  line-height: 1.4;
+
+  color: #4d5728;
+}
 
 /* =========================
    CAMPO DO NOME
 ========================= */
 
-.area-nome {
-
-  position: absolute;
-
-  left: 21.5%;
-
-  right: 21.5%;
-
-  top: 76.5%;
-
-  height: 5.5%;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 20px;
-
-  padding: 0 30px;
-
-  border: 3px solid #65703b;
-
-  border-radius: 28px;
-
-  background: rgba(
-    255,
-    253,
-    240,
-    0.90
-  );
-
-  pointer-events: auto;
-
-}
-
-
-/* ÍCONE */
-
-.icone-pessoa {
-
-  font-size: 42px;
-
-  color: #5b6634;
-
-}
-
-
-/* INPUT */
-
 #nomeJogador {
+  width: 90%;
 
-  width: 100%;
+  padding: 18px 20px;
 
-  height: 100%;
+  margin: 10px 0 20px;
 
-  border: none;
+  border-radius: 18px;
+
+  border: 3px solid #89965b;
+
+  background: #f5f4ee;
+
+  color: #59613b;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 23px;
+
+  text-align: center;
 
   outline: none;
-
-  background: transparent;
-
-  color: #5b6634;
-
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
-
-  font-size: 28px;
-
 }
-
 
 #nomeJogador::placeholder {
+  color: #7b806c;
 
-  color: #777b65;
-
+  font-style: italic;
 }
-
 
 /* =========================
    BOTÃO
 ========================= */
 
-.botao-quiz {
+.painel button {
+  width: 90%;
 
-  position: absolute;
+  padding: 20px;
 
-  left: 20%;
+  border-radius: 25px;
 
-  right: 20%;
-
-  top: 84%;
-
-  height: 6.5%;
-
-  border-radius: 35px;
-
-  border: 4px solid #b49a50;
+  border: 3px solid #a69756;
 
   background:
-
     linear-gradient(
       to bottom,
-      #65723b,
-      #3d4921
+      #77894a,
+      #4d602b
     );
 
-  color: #fffdf1;
+  color: #f8f3df;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
-  font-size: 32px;
+  font-size: 25px;
 
   font-weight: bold;
 
-  letter-spacing: 2px;
-
   cursor: pointer;
 
-  pointer-events: auto;
-
   box-shadow:
-
-    0 8px 15px
-    rgba(0, 0, 0, 0.45),
-
-    inset 0 1px 0
-    rgba(255, 255, 255, 0.25);
+    0 6px 12px rgba(0, 0, 0, 0.4);
 
   transition: 0.3s;
-
 }
 
-
-.botao-quiz:hover {
-
+.painel button:hover {
   transform: scale(1.03);
-
 }
-
 
 /* =========================
    QUIZ
 ========================= */
 
 #quiz {
-
   display: none;
 
   min-height: 100vh;
 
   padding: 40px 20px;
 
-  color: #fffdf2;
-
   text-align: center;
 
+  color: #f5f0df;
+
   background:
-
     linear-gradient(
-      rgba(30, 38, 17, 0.78),
-      rgba(30, 38, 17, 0.90)
+      rgba(20, 30, 15, 0.78),
+      rgba(20, 30, 15, 0.88)
     ),
-
-    url("IMG_2431.png");
+    url("./IMG_2431.png");
 
   background-size: cover;
 
   background-position: center;
 
   background-attachment: fixed;
-
 }
 
+/* =========================
+   PROGRESSO
+========================= */
 
 #progresso {
-
   font-size: 22px;
 
-  color: #d2c27b;
+  color: #b4c38b;
 
+  margin-bottom: 40px;
 }
 
+/* =========================
+   PERGUNTA
+========================= */
 
 #pergunta {
-
-  max-width: 800px;
+  max-width: 850px;
 
   margin: 40px auto;
 
@@ -288,11 +414,17 @@ body {
 
   line-height: 1.3;
 
+  color: #f5f0df;
+
+  text-shadow:
+    2px 2px 5px #000;
 }
 
+/* =========================
+   ALTERNATIVAS
+========================= */
 
 #alternativas {
-
   display: flex;
 
   flex-direction: column;
@@ -300,12 +432,9 @@ body {
   align-items: center;
 
   gap: 15px;
-
 }
 
-
 #alternativas button {
-
   width: 100%;
 
   max-width: 550px;
@@ -314,37 +443,32 @@ body {
 
   border-radius: 18px;
 
-  border: 2px solid #a6ad78;
+  border: 2px solid #9aa86b;
 
-  background: rgba(45, 57, 25, 0.9);
+  background: rgba(30, 45, 20, 0.85);
 
-  color: white;
+  color: #f5f0df;
 
-  font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+  font-family: Georgia, "Times New Roman", serif;
 
   font-size: 22px;
 
   cursor: pointer;
 
+  transition: 0.3s;
 }
-
 
 #alternativas button:hover {
+  background: #718344;
 
-  background: #697642;
-
+  transform: scale(1.03);
 }
-
 
 /* =========================
    RESULTADO
 ========================= */
 
 #resultado {
-
   display: none;
 
   min-height: 100vh;
@@ -359,60 +483,51 @@ body {
 
   text-align: center;
 
-  color: white;
+  color: #f5f0df;
 
   background:
-
     linear-gradient(
-      rgba(30, 38, 17, 0.75),
-      rgba(30, 38, 17, 0.90)
+      rgba(20, 30, 15, 0.75),
+      rgba(20, 30, 15, 0.9)
     ),
-
-    url("IMG_2431.png");
+    url("./IMG_2431.png");
 
   background-size: cover;
 
   background-position: center;
-
 }
-
 
 #resultado h1 {
+  font-size: 45px;
 
-  font-size: 48px;
-
-  color: #d2c27b;
-
+  color: #c3d09b;
 }
 
-
 #resultado p {
-
   max-width: 650px;
 
   font-size: 27px;
 
   line-height: 1.5;
-
 }
 
-
 #resultado button {
+  padding: 16px 25px;
 
-  padding: 16px 28px;
+  border-radius: 15px;
 
-  border-radius: 18px;
+  border: 2px solid #a69756;
 
-  border: 2px solid #b8a45c;
-
-  background: #596631;
+  background: #617438;
 
   color: white;
 
+  font-family: Georgia, "Times New Roman", serif;
+
   font-size: 20px;
 
+  cursor: pointer;
 }
-
 
 /* =========================
    CELULAR
@@ -420,95 +535,87 @@ body {
 
 @media (max-width: 600px) {
 
+  #inicio {
+    padding: 0;
+  }
 
   .capa {
-
     min-height: 100vh;
 
-    background-size: cover;
-
-    background-position: center top;
-
+    border: none;
   }
 
-
-  .area-nome {
-
-    left: 21%;
-
-    right: 21%;
-
-    top: 76.5%;
-
-    height: 5.8%;
-
-    gap: 8px;
-
-    padding: 0 15px;
-
-    border-width: 2px;
-
+  .capa::before {
+    inset: 10px;
   }
 
+  .fita {
+    top: 31%;
 
-  .icone-pessoa {
-
-    font-size: 25px;
-
+    height: 65px;
   }
 
+  .fita span {
+    width: 90px;
+    height: 90px;
+
+    font-size: 48px;
+  }
+
+  .painel {
+    top: 35%;
+
+    left: 5%;
+    right: 5%;
+
+    bottom: 25px;
+
+    padding: 55px 20px 25px;
+
+    border-radius: 30px;
+  }
+
+  .subtitulo {
+    font-size: 21px;
+  }
+
+  .painel h1 {
+    font-size: 39px;
+  }
+
+  .data {
+    font-size: 20px;
+  }
+
+  .descricao {
+    font-size: 18px;
+  }
 
   #nomeJogador {
-
-    font-size: 17px;
-
-  }
-
-
-  .botao-quiz {
-
-    left: 20%;
-
-    right: 20%;
-
-    top: 84%;
-
-    height: 6.5%;
-
-    font-size: 17px;
-
-    letter-spacing: 0;
-
-    border-width: 3px;
-
-  }
-
-
-  #pergunta {
-
-    font-size: 30px;
-
-  }
-
-
-  #alternativas button {
+    width: 100%;
 
     font-size: 19px;
-
   }
 
+  .painel button {
+    width: 100%;
+
+    font-size: 20px;
+  }
+
+  #pergunta {
+    font-size: 30px;
+  }
+
+  #alternativas button {
+    font-size: 19px;
+  }
 
   #resultado h1 {
-
     font-size: 35px;
-
   }
-
 
   #resultado p {
-
     font-size: 22px;
-
   }
-
 }
