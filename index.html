@@ -12,6 +12,7 @@
 
 <body>
 
+
   <!-- =========================
        TELA INICIAL
   ========================== -->
@@ -20,20 +21,20 @@
 
     <div class="capa">
 
-      <!-- FOTO DE FUNDO -->
       <img src="IMG_2431.png" alt="João e Adriana">
 
-      <!-- FITA VERDE -->
+
       <div class="fita">
         <span>♥</span>
       </div>
 
-      <!-- PAINEL CENTRAL -->
+
       <div class="painel">
 
         <div class="subtitulo">
           Nossa história, nosso amor ❤️
         </div>
+
 
         <div class="linha">
           <span></span>
@@ -41,25 +42,32 @@
           <span></span>
         </div>
 
+
         <h1>
           João & Adriana
         </h1>
+
 
         <div class="coracao">
           ♥
         </div>
 
+
         <p class="data">
           03 de agosto de 2026
         </p>
 
+
         <div class="divisoria"></div>
+
 
         <p class="descricao">
           Descubra o quanto você conhece a nossa história!
         </p>
 
-        <!-- NOME DO PARTICIPANTE -->
+
+        <!-- NOME -->
+
         <input
           type="text"
           id="nomeJogador"
@@ -67,7 +75,9 @@
           autocomplete="off"
         >
 
+
         <!-- BOTÃO -->
+
         <button onclick="iniciarQuiz()">
           ✨ Começar o Quiz
         </button>
@@ -77,6 +87,7 @@
     </div>
 
   </section>
+
 
 
   <!-- =========================
@@ -94,8 +105,9 @@
   </section>
 
 
+
   <!-- =========================
-       RESULTADO
+       RESULTADO FINAL
   ========================== -->
 
   <section id="resultado">
@@ -106,11 +118,8 @@
 
     <p id="pontuacao"></p>
 
-    <button onclick="voltarInicio()">
-      🔄 Jogar novamente
-    </button>
-
   </section>
+
 
 
   <!-- =========================
@@ -118,6 +127,7 @@
   ========================== -->
 
   <script>
+
 
     /* =========================
        PERGUNTAS
@@ -136,6 +146,7 @@
         correta: 0
       },
 
+
       {
         pergunta: "Quem costuma comer mais?",
         alternativas: [
@@ -145,6 +156,7 @@
         ],
         correta: 0
       },
+
 
       {
         pergunta: "Quem costuma esquecer mais as coisas?",
@@ -156,6 +168,7 @@
         correta: 1
       },
 
+
       {
         pergunta: "Quem pediu em casamento?",
         alternativas: [
@@ -165,6 +178,7 @@
         ],
         correta: 0
       },
+
 
       {
         pergunta: "Qual lugar vocês mais sonham em conhecer juntos?",
@@ -176,6 +190,7 @@
         correta: 1
       },
 
+
       {
         pergunta: "Quantos filhos vocês sonham em ter?",
         alternativas: [
@@ -185,6 +200,7 @@
         ],
         correta: 1
       },
+
 
       {
         pergunta: "Onde João pediu Adriana em casamento?",
@@ -197,6 +213,7 @@
         correta: 3
       },
 
+
       {
         pergunta: "Quem costuma acordar mais cedo?",
         alternativas: [
@@ -206,6 +223,7 @@
         ],
         correta: 0
       },
+
 
       {
         pergunta: "Quem faz mais piada?",
@@ -217,6 +235,7 @@
         correta: 0
       },
 
+
       {
         pergunta: "Quem é o mais romântico?",
         alternativas: [
@@ -226,6 +245,7 @@
         ],
         correta: 1
       },
+
 
       {
         pergunta: "Quem costuma fazer mais surpresa?",
@@ -237,6 +257,7 @@
         correta: 0
       },
 
+
       {
         pergunta: "Quem demora mais para decidir o que vai comer?",
         alternativas: [
@@ -246,6 +267,7 @@
         ],
         correta: 0
       },
+
 
       {
         pergunta: "Quem canta mais alto no carro?",
@@ -257,6 +279,7 @@
         correta: 0
       },
 
+
       {
         pergunta: "Quem escolhe o filme ou série para assistir?",
         alternativas: [
@@ -266,6 +289,7 @@
         ],
         correta: 0
       },
+
 
       {
         pergunta: "Quem é mais competitivo?",
@@ -277,6 +301,7 @@
         correta: 1
       },
 
+
       {
         pergunta: "Quem é mais provável de esquecer uma data importante?",
         alternativas: [
@@ -286,6 +311,7 @@
         ],
         correta: 1
       },
+
 
       {
         pergunta: "Quem disse 'eu te amo' primeiro?",
@@ -297,6 +323,7 @@
         correta: 0
       },
 
+
       {
         pergunta: "Quem é mais provável de querer viajar de última hora?",
         alternativas: [
@@ -307,6 +334,7 @@
         correta: 1
       },
 
+
       {
         pergunta: "Quem é mais provável de fazer uma compra por impulso?",
         alternativas: [
@@ -316,6 +344,7 @@
         ],
         correta: 1
       },
+
 
       {
         pergunta: "Quem é mais provável de esquecer onde colocou alguma coisa?",
@@ -330,13 +359,17 @@
     ];
 
 
+
     /* =========================
        VARIÁVEIS
     ========================== */
 
     let perguntaAtual = 0;
+
     let pontuacao = 0;
+
     let nomeJogador = "";
+
 
 
     /* =========================
@@ -345,29 +378,72 @@
 
     function iniciarQuiz() {
 
-      const campoNome =
-        document.getElementById("nomeJogador");
 
-      nomeJogador =
-        campoNome.value.trim();
+      // VERIFICA SE JÁ RESPONDEU
 
+      if (
+        localStorage.getItem("quizRespondido") === "sim"
+      ) {
 
-      if (nomeJogador === "") {
-
-        alert("Por favor, digite seu nome antes de começar! ❤️");
-
-        campoNome.focus();
+        alert(
+          "Você já respondeu este quiz! ❤️"
+        );
 
         return;
 
       }
 
 
-      document.getElementById("inicio").style.display = "none";
+      // PEGA O NOME
 
-      document.getElementById("quiz").style.display = "block";
+      const campoNome =
+        document.getElementById(
+          "nomeJogador"
+        );
 
-      document.getElementById("resultado").style.display = "none";
+
+      nomeJogador =
+        campoNome.value.trim();
+
+
+      // OBRIGA A COLOCAR O NOME
+
+      if (
+        nomeJogador === ""
+      ) {
+
+        alert(
+          "Por favor, digite seu nome antes de começar! ❤️"
+        );
+
+
+        campoNome.focus();
+
+
+        return;
+
+      }
+
+
+      // ESCONDE INÍCIO
+
+      document.getElementById(
+        "inicio"
+      ).style.display = "none";
+
+
+      // MOSTRA QUIZ
+
+      document.getElementById(
+        "quiz"
+      ).style.display = "block";
+
+
+      // ESCONDE RESULTADO
+
+      document.getElementById(
+        "resultado"
+      ).style.display = "none";
 
 
       perguntaAtual = 0;
@@ -380,37 +456,59 @@
     }
 
 
+
     /* =========================
        MOSTRAR PERGUNTA
     ========================== */
 
     function mostrarPergunta() {
 
+
       const pergunta =
-        perguntas[perguntaAtual];
+        perguntas[
+          perguntaAtual
+        ];
 
 
-      document.getElementById("progresso").textContent =
-        `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+      document.getElementById(
+        "progresso"
+      ).textContent =
+
+        `Pergunta ${
+          perguntaAtual + 1
+        } de ${
+          perguntas.length
+        }`;
 
 
-      document.getElementById("pergunta").textContent =
+      document.getElementById(
+        "pergunta"
+      ).textContent =
+
         pergunta.pergunta;
 
 
       const alternativas =
-        document.getElementById("alternativas");
+        document.getElementById(
+          "alternativas"
+        );
 
 
       alternativas.innerHTML = "";
 
 
       pergunta.alternativas.forEach(
-        (alternativa, indice) => {
+
+        (
+          alternativa,
+          indice
+        ) => {
 
 
           const botao =
-            document.createElement("button");
+            document.createElement(
+              "button"
+            );
 
 
           botao.textContent =
@@ -422,7 +520,8 @@
 
 
               if (
-                indice === pergunta.correta
+                indice ===
+                pergunta.correta
               ) {
 
                 pontuacao++;
@@ -434,13 +533,17 @@
 
 
               if (
+
                 perguntaAtual <
                 perguntas.length
+
               ) {
 
                 mostrarPergunta();
 
-              } else {
+              }
+
+              else {
 
                 mostrarResultado();
 
@@ -449,12 +552,16 @@
             };
 
 
-          alternativas.appendChild(botao);
+          alternativas.appendChild(
+            botao
+          );
 
         }
+
       );
 
     }
+
 
 
     /* =========================
@@ -463,12 +570,27 @@
 
     function mostrarResultado() {
 
-      document.getElementById("quiz").style.display =
-        "none";
+
+      // MARCA COMO RESPONDIDO
+
+      localStorage.setItem(
+        "quizRespondido",
+        "sim"
+      );
 
 
-      document.getElementById("resultado").style.display =
-        "flex";
+      // ESCONDE QUIZ
+
+      document.getElementById(
+        "quiz"
+      ).style.display = "none";
+
+
+      // MOSTRA RESULTADO
+
+      document.getElementById(
+        "resultado"
+      ).style.display = "flex";
 
 
       let titulo = "";
@@ -476,60 +598,88 @@
       let mensagem = "";
 
 
-      if (pontuacao === 20) {
+
+      if (
+        pontuacao === 20
+      ) {
+
 
         titulo =
-          `Você acertou 20/20! 😍❤️`;
+          "Você acertou 20/20! 😍❤️";
+
 
         mensagem =
           `Parabéns, ${nomeJogador}! Você conhece nossa história de um jeito incrível! Já pode dizer que é especialista em João & Adriana! 💍✨`;
 
       }
 
-      else if (pontuacao >= 17) {
+
+      else if (
+        pontuacao >= 17
+      ) {
+
 
         titulo =
           `Você acertou ${pontuacao}/20! 🥰`;
+
 
         mensagem =
           `Uau, ${nomeJogador}! Você conhece muito bem a nossa história! Está quase no nível especialista em João & Adriana! ❤️✨`;
 
       }
 
-      else if (pontuacao >= 14) {
+
+      else if (
+        pontuacao >= 14
+      ) {
+
 
         titulo =
           `Você acertou ${pontuacao}/20! 😍`;
+
 
         mensagem =
           `Muito bem, ${nomeJogador}! Você conhece bastante a nossa história e sabe muitos detalhes sobre nós! ❤️`;
 
       }
 
-      else if (pontuacao >= 10) {
+
+      else if (
+        pontuacao >= 10
+      ) {
+
 
         titulo =
           `Você acertou ${pontuacao}/20! 😊`;
+
 
         mensagem =
           `Foi bem, ${nomeJogador}! Mas ainda temos algumas histórias e detalhes para você descobrir sobre nós! ❤️`;
 
       }
 
-      else if (pontuacao >= 5) {
+
+      else if (
+        pontuacao >= 5
+      ) {
+
 
         titulo =
           `Você acertou ${pontuacao}/20! 😄`;
+
 
         mensagem =
           `${nomeJogador}, ainda temos muito para conversar! Parece que precisamos contar nossa história com mais detalhes! ❤️`;
 
       }
 
+
       else {
+
 
         titulo =
           `Você acertou ${pontuacao}/20! 😂`;
+
 
         mensagem =
           `Eita, ${nomeJogador}! Parece que você precisa conhecer melhor a história de João & Adriana! Mas ainda dá tempo de aprender tudo! ❤️`;
@@ -537,43 +687,20 @@
       }
 
 
-      document.getElementById("tituloResultado").textContent =
+
+      document.getElementById(
+        "tituloResultado"
+      ).textContent =
         titulo;
 
 
-      document.getElementById("pontuacao").textContent =
+      document.getElementById(
+        "pontuacao"
+      ).textContent =
         mensagem;
 
     }
 
-
-    /* =========================
-       VOLTAR AO INÍCIO
-    ========================== */
-
-    function voltarInicio() {
-
-      document.getElementById("resultado").style.display =
-        "none";
-
-
-      document.getElementById("quiz").style.display =
-        "none";
-
-
-      document.getElementById("inicio").style.display =
-        "flex";
-
-
-      document.getElementById("nomeJogador").value =
-        "";
-
-
-      perguntaAtual = 0;
-
-      pontuacao = 0;
-
-    }
 
   </script>
 
