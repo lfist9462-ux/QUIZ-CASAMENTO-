@@ -1,6 +1,6 @@
-/* =========================
-   CONFIGURAÇÃO GERAL
-========================= */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -15,188 +15,248 @@ body {
 
 body {
   font-family: Georgia, "Times New Roman", serif;
-  background: #182014;
-  color: #f5f0df;
+  background: #172014;
+  color: #3d4520;
 }
 
-/* =========================
+
+/* =====================================================
    TELA INICIAL
-========================= */
+===================================================== */
 
 #inicio {
   min-height: 100vh;
   width: 100%;
-  padding: 0;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
-  background: #182014;
-}
+  padding: 0;
 
-/* =========================
-   CAPA PRINCIPAL
-========================= */
-
-.capa {
-  position: relative;
-
-  width: 100%;
-  max-width: 650px;
-  min-height: 100vh;
-
-  overflow: hidden;
-
-  background-image:
+  background:
     linear-gradient(
-      rgba(25, 35, 20, 0.20),
-      rgba(25, 35, 20, 0.45)
+      rgba(30, 42, 20, 0.15),
+      rgba(30, 42, 20, 0.25)
     ),
     url("./IMG_2431.png");
 
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
-
-  border: 2px solid #687a3e;
-
-  box-shadow:
-    inset 0 0 0 8px rgba(80, 96, 40, 0.35),
-    0 0 30px rgba(0, 0, 0, 0.7);
 }
 
-/* =========================
-   MOLDURA INTERNA
-========================= */
+
+/* =====================================================
+   CAPA PRINCIPAL
+===================================================== */
+
+.capa {
+  position: relative;
+
+  width: 100%;
+  max-width: 700px;
+
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      rgba(39, 55, 24, 0.78),
+      rgba(26, 40, 19, 0.94)
+    );
+
+  border-left: 2px solid #8a9560;
+  border-right: 2px solid #8a9560;
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.55);
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =====================================================
+   FOTO SUPERIOR
+===================================================== */
+
+.capa > img {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 430px;
+
+  object-fit: cover;
+
+  z-index: 1;
+
+  filter:
+    brightness(0.95)
+    saturate(0.85);
+}
+
+
+/* Escurecimento suave da foto */
 
 .capa::before {
   content: "";
 
   position: absolute;
-  inset: 18px;
 
-  border: 2px solid rgba(106, 120, 54, 0.8);
-
-  border-radius: 25px;
-
-  pointer-events: none;
-
-  z-index: 10;
-}
-
-/* =========================
-   FITA VERDE
-========================= */
-
-.fita {
-  position: absolute;
-
-  top: 34%;
-
+  top: 0;
   left: 0;
 
   width: 100%;
-  height: 75px;
+  height: 470px;
 
-  z-index: 3;
+  z-index: 2;
 
   background:
     linear-gradient(
       to bottom,
-      #899d59,
-      #63763d,
-      #899d59
+      rgba(0, 0, 0, 0.05),
+      rgba(20, 35, 15, 0.35),
+      rgba(25, 40, 18, 0.95)
     );
-
-  box-shadow:
-    0 5px 12px rgba(0, 0, 0, 0.5);
 }
 
-.fita span {
+
+/* =====================================================
+   FAIXA VERDE OLIVA
+===================================================== */
+
+.fita {
   position: absolute;
 
-  top: -30px;
-  left: 50%;
+  top: 390px;
+  left: 0;
 
-  transform: translateX(-50%);
+  width: 100%;
+  height: 90px;
 
-  width: 100px;
-  height: 100px;
-
-  border-radius: 50%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #f5f0df;
-
-  border: 4px solid #6c793d;
-
-  color: #66753c;
-
-  font-size: 55px;
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.5);
-}
-
-/* =========================
-   PAINEL CENTRAL
-========================= */
-
-.painel {
-  position: absolute;
-
-  z-index: 4;
-
-  top: 38%;
-
-  left: 8%;
-  right: 8%;
-
-  bottom: 35px;
-
-  padding: 65px 35px 35px;
-
-  border-radius: 35px;
+  z-index: 5;
 
   background:
     linear-gradient(
-      rgba(248, 244, 229, 0.96),
-      rgba(239, 235, 216, 0.96)
+      to bottom,
+      #8d9b5e,
+      #68763d,
+      #8c995b
     );
 
-  border: 2px solid #9a965d;
+  border-top: 2px solid rgba(220, 220, 170, 0.45);
+  border-bottom: 2px solid rgba(40, 50, 20, 0.55);
 
-  color: #4b5427;
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Círculo central */
+
+.fita span {
+  position: relative;
+
+  width: 125px;
+  height: 125px;
+
+  border-radius: 50%;
+
+  background:
+    #f6f1df;
+
+  border: 5px solid #707d43;
+
+  outline: 3px solid #d4c78e;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #69753e;
+
+  font-size: 60px;
+
+  line-height: 1;
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =====================================================
+   PAINEL CREME CENTRAL
+===================================================== */
+
+.painel {
+  position: relative;
+
+  z-index: 4;
+
+  margin-top: 430px;
+
+  min-height: calc(100vh - 430px);
+
+  padding:
+    80px
+    35px
+    60px;
+
+  background:
+    linear-gradient(
+      rgba(250, 247, 235, 0.98),
+      rgba(243, 239, 220, 0.98)
+    );
+
+  border-radius:
+    45px
+    45px
+    0
+    0;
+
+  border:
+    2px solid #9c9d65;
+
+  box-shadow:
+    inset 0 0 35px rgba(120, 110, 55, 0.12);
+
+  color: #3f4722;
 
   text-align: center;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  box-shadow:
-    0 8px 20px rgba(0, 0, 0, 0.45);
 }
 
-/* =========================
+
+/* =====================================================
    SUBTÍTULO
-========================= */
+===================================================== */
 
 .subtitulo {
-  font-size: 27px;
+  font-size: 28px;
 
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 
-  color: #4d572a;
+  color: #4c5527;
+
+  font-weight: 500;
 }
 
-/* =========================
-   LINHAS
-========================= */
+
+/* =====================================================
+   LINHAS DECORATIVAS
+===================================================== */
 
 .linha {
   display: flex;
@@ -204,13 +264,13 @@ body {
   align-items: center;
   justify-content: center;
 
-  gap: 15px;
+  gap: 18px;
 
-  width: 90%;
+  width: 80%;
 
-  color: #768747;
+  color: #7c8245;
 
-  font-size: 25px;
+  font-size: 24px;
 }
 
 .linha span {
@@ -218,167 +278,235 @@ body {
 
   flex: 1;
 
-  background: #768747;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #9b955c
+    );
 }
 
-/* =========================
-   TÍTULO
-========================= */
+.linha span:last-child {
+  background:
+    linear-gradient(
+      to left,
+      transparent,
+      #9b955c
+    );
+}
+
+
+/* =====================================================
+   NOME DO CASAL
+===================================================== */
 
 .painel h1 {
-  margin: 25px 0 10px;
+  margin: 30px 0 10px;
 
-  font-size: 58px;
+  font-size: clamp(48px, 8vw, 82px);
 
-  color: #4d5728;
+  line-height: 1.05;
+
+  color: #3e471f;
+
+  font-weight: normal;
 
   text-shadow:
-    1px 2px 1px rgba(0, 0, 0, 0.2);
+    1px 2px 1px rgba(255, 255, 255, 0.7);
 }
 
-/* =========================
-   CORAÇÃO
-========================= */
+
+/* =====================================================
+   CORAÇÕES
+===================================================== */
 
 .coracao {
   font-size: 38px;
 
-  color: #738343;
+  color: #6f793b;
 
-  margin: 5px 0;
+  margin: 5px 0 12px;
 }
 
-/* =========================
+
+/* =====================================================
    DATA
-========================= */
+===================================================== */
 
 .data {
   font-size: 25px;
 
   font-weight: bold;
 
-  color: #4d5728;
+  color: #4a5126;
+
+  margin: 12px 0;
 }
 
-/* =========================
+
+/* =====================================================
    DIVISÓRIA
-========================= */
+===================================================== */
 
 .divisoria {
-  width: 80%;
+  width: 75%;
 
   height: 2px;
 
-  background: #aaa36b;
+  margin: 18px 0 22px;
 
-  margin: 20px 0;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      #aaa16a,
+      transparent
+    );
 }
 
-/* =========================
+
+/* =====================================================
    DESCRIÇÃO
-========================= */
+===================================================== */
 
 .descricao {
-  font-size: 23px;
+  max-width: 570px;
 
-  line-height: 1.4;
+  margin: 15px auto 35px;
 
-  color: #4d5728;
+  font-size: 25px;
+
+  line-height: 1.45;
+
+  color: #4d542b;
 }
 
-/* =========================
+
+/* =====================================================
    CAMPO DO NOME
-========================= */
+===================================================== */
 
 #nomeJogador {
   width: 90%;
+  max-width: 560px;
 
-  padding: 18px 20px;
+  padding: 20px 25px;
 
-  margin: 10px 0 20px;
+  margin-bottom: 22px;
 
   border-radius: 18px;
 
-  border: 3px solid #89965b;
+  border: 2px solid #7d874d;
 
-  background: #f5f4ee;
+  background:
+    #faf9f3;
 
-  color: #59613b;
+  color: #4b5329;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  font-size: 23px;
+  font-size: 24px;
 
   text-align: center;
 
   outline: none;
+
+  box-shadow:
+    inset 0 2px 5px rgba(0, 0, 0, 0.08);
 }
 
 #nomeJogador::placeholder {
-  color: #7b806c;
+  color: #747b63;
 
   font-style: italic;
 }
 
-/* =========================
-   BOTÃO
-========================= */
+#nomeJogador:focus {
+  border-color: #59682f;
+
+  box-shadow:
+    0 0 0 4px rgba(125, 135, 77, 0.2);
+}
+
+
+/* =====================================================
+   BOTÃO COMEÇAR
+===================================================== */
 
 .painel button {
   width: 90%;
+  max-width: 560px;
 
   padding: 20px;
 
-  border-radius: 25px;
+  border-radius: 22px;
 
-  border: 3px solid #a69756;
+  border: 3px solid #b9a764;
 
   background:
     linear-gradient(
       to bottom,
-      #77894a,
-      #4d602b
+      #68773b,
+      #3e4d20
     );
 
   color: #f8f3df;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
   font-size: 25px;
 
   font-weight: bold;
 
+  letter-spacing: 1px;
+
   cursor: pointer;
 
   box-shadow:
-    0 6px 12px rgba(0, 0, 0, 0.4);
+    0 7px 15px rgba(0, 0, 0, 0.35);
 
   transition: 0.3s;
 }
 
 .painel button:hover {
-  transform: scale(1.03);
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      to bottom,
+      #78884a,
+      #4b5b27
+    );
 }
 
-/* =========================
+
+/* =====================================================
    QUIZ
-========================= */
+===================================================== */
 
 #quiz {
   display: none;
 
   min-height: 100vh;
 
-  padding: 40px 20px;
+  width: 100%;
+
+  padding: 45px 20px;
+
+  color: #f5f1df;
 
   text-align: center;
 
-  color: #f5f0df;
-
   background:
     linear-gradient(
-      rgba(20, 30, 15, 0.78),
-      rgba(20, 30, 15, 0.88)
+      rgba(22, 34, 17, 0.84),
+      rgba(22, 34, 17, 0.92)
     ),
     url("./IMG_2431.png");
 
@@ -389,40 +517,37 @@ body {
   background-attachment: fixed;
 }
 
-/* =========================
-   PROGRESSO
-========================= */
+
+/* Progresso */
 
 #progresso {
-  font-size: 22px;
+  font-size: 23px;
 
-  color: #b4c38b;
+  color: #c3c991;
 
   margin-bottom: 40px;
 }
 
-/* =========================
-   PERGUNTA
-========================= */
+
+/* Pergunta */
 
 #pergunta {
   max-width: 850px;
 
   margin: 40px auto;
 
-  font-size: 38px;
+  font-size: 40px;
 
   line-height: 1.3;
 
-  color: #f5f0df;
+  color: #f7f2df;
 
   text-shadow:
     2px 2px 5px #000;
 }
 
-/* =========================
-   ALTERNATIVAS
-========================= */
+
+/* Alternativas */
 
 #alternativas {
   display: flex;
@@ -431,27 +556,31 @@ body {
 
   align-items: center;
 
-  gap: 15px;
+  gap: 16px;
 }
 
 #alternativas button {
   width: 100%;
 
-  max-width: 550px;
+  max-width: 600px;
 
-  padding: 18px;
+  padding: 19px;
 
   border-radius: 18px;
 
-  border: 2px solid #9aa86b;
+  border: 2px solid #9ba56d;
 
-  background: rgba(30, 45, 20, 0.85);
+  background:
+    rgba(40, 54, 25, 0.9);
 
-  color: #f5f0df;
+  color: #f5f1df;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  font-size: 22px;
+  font-size: 23px;
 
   cursor: pointer;
 
@@ -459,21 +588,22 @@ body {
 }
 
 #alternativas button:hover {
-  background: #718344;
-
   transform: scale(1.03);
+
+  background: #68773b;
 }
 
-/* =========================
+
+/* =====================================================
    RESULTADO
-========================= */
+===================================================== */
 
 #resultado {
   display: none;
 
   min-height: 100vh;
 
-  padding: 30px 20px;
+  padding: 40px 20px;
 
   flex-direction: column;
 
@@ -483,12 +613,12 @@ body {
 
   text-align: center;
 
-  color: #f5f0df;
+  color: #f5f1df;
 
   background:
     linear-gradient(
-      rgba(20, 30, 15, 0.75),
-      rgba(20, 30, 15, 0.9)
+      rgba(22, 34, 17, 0.84),
+      rgba(22, 34, 17, 0.92)
     ),
     url("./IMG_2431.png");
 
@@ -498,9 +628,12 @@ body {
 }
 
 #resultado h1 {
-  font-size: 45px;
+  font-size: 48px;
 
-  color: #c3d09b;
+  color: #c5ce93;
+
+  text-shadow:
+    2px 2px 5px #000;
 }
 
 #resultado p {
@@ -512,95 +645,110 @@ body {
 }
 
 #resultado button {
-  padding: 16px 25px;
+  padding: 17px 28px;
 
-  border-radius: 15px;
+  border-radius: 18px;
 
-  border: 2px solid #a69756;
+  border: 2px solid #c1b271;
 
-  background: #617438;
+  background: #68773b;
 
   color: white;
 
-  font-family: Georgia, "Times New Roman", serif;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-  font-size: 20px;
+  font-size: 21px;
 
   cursor: pointer;
 }
 
-/* =========================
+
+/* =====================================================
    CELULAR
-========================= */
+===================================================== */
 
 @media (max-width: 600px) {
 
   #inicio {
-    padding: 0;
+    min-height: 100vh;
   }
 
   .capa {
     min-height: 100vh;
 
-    border: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .capa > img {
+    height: 360px;
   }
 
   .capa::before {
-    inset: 10px;
+    height: 400px;
   }
 
   .fita {
-    top: 31%;
+    top: 325px;
 
-    height: 65px;
+    height: 72px;
   }
 
   .fita span {
-    width: 90px;
-    height: 90px;
+    width: 105px;
+    height: 105px;
 
-    font-size: 48px;
+    font-size: 50px;
   }
 
   .painel {
-    top: 35%;
+    margin-top: 360px;
 
-    left: 5%;
-    right: 5%;
+    min-height: calc(100vh - 360px);
 
-    bottom: 25px;
-
-    padding: 55px 20px 25px;
-
-    border-radius: 30px;
+    padding:
+      70px
+      20px
+      45px;
   }
 
   .subtitulo {
-    font-size: 21px;
+    font-size: 22px;
   }
 
   .painel h1 {
-    font-size: 39px;
+    font-size: 48px;
   }
 
   .data {
-    font-size: 20px;
+    font-size: 21px;
   }
 
   .descricao {
-    font-size: 18px;
+    font-size: 21px;
   }
 
   #nomeJogador {
     width: 100%;
 
-    font-size: 19px;
+    font-size: 21px;
+
+    padding: 18px 15px;
   }
 
   .painel button {
     width: 100%;
 
-    font-size: 20px;
+    font-size: 21px;
+
+    padding: 18px 10px;
+  }
+
+  #quiz {
+    padding: 35px 15px;
   }
 
   #pergunta {
@@ -608,11 +756,11 @@ body {
   }
 
   #alternativas button {
-    font-size: 19px;
+    font-size: 20px;
   }
 
   #resultado h1 {
-    font-size: 35px;
+    font-size: 36px;
   }
 
   #resultado p {
