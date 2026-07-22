@@ -2,16 +2,12 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>João & Adriana ❤️</title>
 
   <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
@@ -24,37 +20,56 @@
 
     <div class="capa">
 
-      <div class="arte-capa">
+      <!-- FOTO DE FUNDO -->
+      <img src="IMG_2431.png" alt="João e Adriana">
 
-        <!-- ÁREA DO NOME -->
-        <div class="area-nome">
+      <!-- FITA VERDE -->
+      <div class="fita">
+        <span>♥</span>
+      </div>
 
-          <div class="icone-pessoa">
-            ♙
-          </div>
+      <!-- PAINEL CENTRAL -->
+      <div class="painel">
 
-          <input
-            type="text"
-            id="nomeJogador"
-            placeholder="Digite seu nome"
-            autocomplete="off"
-          >
-
+        <div class="subtitulo">
+          Nossa história, nosso amor ❤️
         </div>
 
+        <div class="linha">
+          <span></span>
+          ♥
+          <span></span>
+        </div>
 
-        <!-- BOTÃO -->
-        <button
-          class="botao-quiz"
-          onclick="iniciarQuiz()"
+        <h1>
+          João & Adriana
+        </h1>
+
+        <div class="coracao">
+          ♥
+        </div>
+
+        <p class="data">
+          03 de agosto de 2026
+        </p>
+
+        <div class="divisoria"></div>
+
+        <p class="descricao">
+          Descubra o quanto você conhece a nossa história!
+        </p>
+
+        <!-- NOME DO PARTICIPANTE -->
+        <input
+          type="text"
+          id="nomeJogador"
+          placeholder="Digite seu nome"
+          autocomplete="off"
         >
 
-          <span>🌿</span>
-
-          COMEÇAR O QUIZ
-
-          <span>🌿</span>
-
+        <!-- BOTÃO -->
+        <button onclick="iniciarQuiz()">
+          ✨ Começar o Quiz
         </button>
 
       </div>
@@ -98,11 +113,15 @@
   </section>
 
 
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
   <script>
 
     /* =========================
        PERGUNTAS
-    ========================= */
+    ========================== */
 
     const perguntas = [
 
@@ -311,10 +330,12 @@
     ];
 
 
+    /* =========================
+       VARIÁVEIS
+    ========================== */
+
     let perguntaAtual = 0;
-
     let pontuacao = 0;
-
     let nomeJogador = "";
 
 
@@ -324,37 +345,35 @@
 
     function iniciarQuiz() {
 
+      const campoNome =
+        document.getElementById("nomeJogador");
+
       nomeJogador =
-        document
-        .getElementById("nomeJogador")
-        .value
-        .trim();
+        campoNome.value.trim();
 
 
       if (nomeJogador === "") {
 
-        alert("Digite seu nome para começar o quiz ❤️");
+        alert("Por favor, digite seu nome antes de começar! ❤️");
+
+        campoNome.focus();
 
         return;
 
       }
 
 
-      document
-      .getElementById("inicio")
-      .style
-      .display = "none";
+      document.getElementById("inicio").style.display = "none";
 
+      document.getElementById("quiz").style.display = "block";
 
-      document
-      .getElementById("quiz")
-      .style
-      .display = "block";
+      document.getElementById("resultado").style.display = "none";
 
 
       perguntaAtual = 0;
 
       pontuacao = 0;
+
 
       mostrarPergunta();
 
@@ -371,28 +390,22 @@
         perguntas[perguntaAtual];
 
 
-      document
-      .getElementById("progresso")
-      .textContent =
+      document.getElementById("progresso").textContent =
         `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
 
 
-      document
-      .getElementById("pergunta")
-      .textContent =
+      document.getElementById("pergunta").textContent =
         pergunta.pergunta;
 
 
       const alternativas =
-        document
-        .getElementById("alternativas");
+        document.getElementById("alternativas");
 
 
       alternativas.innerHTML = "";
 
 
       pergunta.alternativas.forEach(
-
         (alternativa, indice) => {
 
 
@@ -404,65 +417,58 @@
             alternativa;
 
 
-          botao.onclick = function() {
+          botao.onclick =
+            function () {
 
 
-            if (
-              indice ===
-              pergunta.correta
-            ) {
+              if (
+                indice === pergunta.correta
+              ) {
 
-              pontuacao++;
+                pontuacao++;
 
-            }
-
-
-            perguntaAtual++;
+              }
 
 
-            if (
-              perguntaAtual <
-              perguntas.length
-            ) {
+              perguntaAtual++;
 
-              mostrarPergunta();
 
-            }
+              if (
+                perguntaAtual <
+                perguntas.length
+              ) {
 
-            else {
+                mostrarPergunta();
 
-              mostrarResultado();
+              } else {
 
-            }
+                mostrarResultado();
 
-          };
+              }
+
+            };
 
 
           alternativas.appendChild(botao);
 
         }
-
       );
 
     }
 
 
     /* =========================
-       RESULTADO
+       RESULTADO FINAL
     ========================== */
 
     function mostrarResultado() {
 
-      document
-      .getElementById("quiz")
-      .style
-      .display = "none";
+      document.getElementById("quiz").style.display =
+        "none";
 
 
-      document
-      .getElementById("resultado")
-      .style
-      .display = "flex";
+      document.getElementById("resultado").style.display =
+        "flex";
 
 
       let titulo = "";
@@ -470,9 +476,7 @@
       let mensagem = "";
 
 
-      if (
-        pontuacao === 20
-      ) {
+      if (pontuacao === 20) {
 
         titulo =
           `Você acertou 20/20! 😍❤️`;
@@ -482,86 +486,92 @@
 
       }
 
-      else if (
-        pontuacao >= 17
-      ) {
+      else if (pontuacao >= 17) {
 
         titulo =
           `Você acertou ${pontuacao}/20! 🥰`;
 
         mensagem =
-          `Parabéns, ${nomeJogador}! Você conhece muito bem a nossa história! ❤️✨`;
+          `Uau, ${nomeJogador}! Você conhece muito bem a nossa história! Está quase no nível especialista em João & Adriana! ❤️✨`;
 
       }
 
-      else if (
-        pontuacao >= 14
-      ) {
+      else if (pontuacao >= 14) {
 
         titulo =
           `Você acertou ${pontuacao}/20! 😍`;
 
         mensagem =
-          `Muito bem, ${nomeJogador}! Você conhece bastante a nossa história! ❤️`;
+          `Muito bem, ${nomeJogador}! Você conhece bastante a nossa história e sabe muitos detalhes sobre nós! ❤️`;
 
       }
 
-      else if (
-        pontuacao >= 10
-      ) {
+      else if (pontuacao >= 10) {
 
         titulo =
           `Você acertou ${pontuacao}/20! 😊`;
 
         mensagem =
-          `Foi bem, ${nomeJogador}! Ainda temos algumas histórias para você descobrir! ❤️`;
+          `Foi bem, ${nomeJogador}! Mas ainda temos algumas histórias e detalhes para você descobrir sobre nós! ❤️`;
+
+      }
+
+      else if (pontuacao >= 5) {
+
+        titulo =
+          `Você acertou ${pontuacao}/20! 😄`;
+
+        mensagem =
+          `${nomeJogador}, ainda temos muito para conversar! Parece que precisamos contar nossa história com mais detalhes! ❤️`;
 
       }
 
       else {
 
         titulo =
-          `Você acertou ${pontuacao}/20! 😄`;
+          `Você acertou ${pontuacao}/20! 😂`;
 
         mensagem =
-          `${nomeJogador}, ainda temos muito para você conhecer sobre a história de João & Adriana! ❤️`;
+          `Eita, ${nomeJogador}! Parece que você precisa conhecer melhor a história de João & Adriana! Mas ainda dá tempo de aprender tudo! ❤️`;
 
       }
 
 
-      document
-      .getElementById("tituloResultado")
-      .textContent = titulo;
+      document.getElementById("tituloResultado").textContent =
+        titulo;
 
 
-      document
-      .getElementById("pontuacao")
-      .textContent = mensagem;
+      document.getElementById("pontuacao").textContent =
+        mensagem;
 
     }
 
 
     /* =========================
-       VOLTAR
+       VOLTAR AO INÍCIO
     ========================== */
 
     function voltarInicio() {
 
-      document
-      .getElementById("resultado")
-      .style
-      .display = "none";
+      document.getElementById("resultado").style.display =
+        "none";
 
 
-      document
-      .getElementById("inicio")
-      .style
-      .display = "flex";
+      document.getElementById("quiz").style.display =
+        "none";
 
 
-      document
-      .getElementById("nomeJogador")
-      .value = "";
+      document.getElementById("inicio").style.display =
+        "flex";
+
+
+      document.getElementById("nomeJogador").value =
+        "";
+
+
+      perguntaAtual = 0;
+
+      pontuacao = 0;
 
     }
 
