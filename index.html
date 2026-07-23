@@ -12,22 +12,16 @@
 
 <body>
 
-
-  <!-- =========================
-       TELA INICIAL
-  ========================== -->
-
+  <!-- TELA INICIAL -->
   <section id="inicio">
 
     <div class="capa">
 
       <img src="IMG_2431.png" alt="João e Adriana">
 
-
       <div class="fita">
         <span>♥</span>
       </div>
-
 
       <div class="painel">
 
@@ -35,48 +29,35 @@
           Nossa história, nosso amor ❤️
         </div>
 
-
         <div class="linha">
           <span></span>
           ♥
           <span></span>
         </div>
 
-
         <h1>
           João & Adriana
         </h1>
-
 
         <div class="coracao">
           ♥
         </div>
 
-
         <p class="data">
           03 de agosto de 2026
         </p>
 
-
         <div class="divisoria"></div>
-
 
         <p class="descricao">
           Descubra o quanto você conhece a nossa história!
         </p>
 
-
-        <!-- NOME -->
-
         <input
           type="text"
           id="nomeJogador"
           placeholder="Digite seu nome"
-          autocomplete="off"
-        >
-
-
-        <!-- BOTÃO -->
+          autocomplete="off">
 
         <button onclick="iniciarQuiz()">
           ✨ Começar o Quiz
@@ -88,12 +69,7 @@
 
   </section>
 
-
-
-  <!-- =========================
-       QUIZ
-  ========================== -->
-
+  <!-- QUIZ -->
   <section id="quiz">
 
     <p id="progresso"></p>
@@ -104,12 +80,7 @@
 
   </section>
 
-
-
-  <!-- =========================
-       RESULTADO FINAL
-  ========================== -->
-
+  <!-- RESULTADO -->
   <section id="resultado">
 
     <h1 id="tituloResultado">
@@ -120,589 +91,7 @@
 
   </section>
 
-
-
-  <!-- =========================
-       JAVASCRIPT
-  ========================== -->
-
-  <script>
-
-
-    /* =========================
-       PERGUNTAS
-    ========================== */
-
-    const perguntas = [
-
-      {
-        pergunta: "Onde João e Adriana se conheceram?",
-        alternativas: [
-          "No trabalho",
-          "Na escola",
-          "Em uma festa",
-          "Pela internet"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem costuma comer mais?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois por igual"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem costuma esquecer mais as coisas?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem pediu em casamento?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois juntos"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Qual lugar vocês mais sonham em conhecer juntos?",
-        alternativas: [
-          "Paris",
-          "Japão",
-          "Nova York"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quantos filhos vocês sonham em ter?",
-        alternativas: [
-          "1",
-          "2",
-          "3"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Onde João pediu Adriana em casamento?",
-        alternativas: [
-          "Em um café",
-          "No Café Oliva",
-          "No Mais Um Café",
-          "No Ermida Dom Bosco"
-        ],
-        correta: 3
-      },
-
-
-      {
-        pergunta: "Quem costuma acordar mais cedo?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois juntos"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem faz mais piada?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem é o mais romântico?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem costuma fazer mais surpresa?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem demora mais para decidir o que vai comer?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem canta mais alto no carro?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem escolhe o filme ou série para assistir?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois juntos"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem é mais competitivo?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem é mais provável de esquecer uma data importante?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem disse 'eu te amo' primeiro?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois juntos"
-        ],
-        correta: 0
-      },
-
-
-      {
-        pergunta: "Quem é mais provável de querer viajar de última hora?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem é mais provável de fazer uma compra por impulso?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 1
-      },
-
-
-      {
-        pergunta: "Quem é mais provável de esquecer onde colocou alguma coisa?",
-        alternativas: [
-          "João",
-          "Adriana",
-          "Os dois"
-        ],
-        correta: 0
-      }
-
-    ];
-
-
-
-    /* =========================
-       VARIÁVEIS
-    ========================== */
-
-    let perguntaAtual = 0;
-
-    let pontuacao = 0;
-
-    let nomeJogador = "";
-
-
-
-    /* =========================
-       INICIAR QUIZ
-    ========================== */
-
-    function iniciarQuiz() {
-
-
-      // VERIFICA SE JÁ RESPONDEU
-
-      if (
-        localStorage.getItem("quizRespondido") === "sim"
-      ) {
-
-        alert(
-          "Você já respondeu este quiz! ❤️"
-        );
-
-        return;
-
-      }
-
-
-      // PEGA O NOME
-
-      const campoNome =
-        document.getElementById(
-          "nomeJogador"
-        );
-
-
-      nomeJogador =
-        campoNome.value.trim();
-
-
-      // OBRIGA A COLOCAR O NOME
-
-      if (
-        nomeJogador === ""
-      ) {
-
-        alert(
-          "Por favor, digite seu nome antes de começar! ❤️"
-        );
-
-
-        campoNome.focus();
-
-
-        return;
-
-      }
-
-
-      // ESCONDE INÍCIO
-
-      document.getElementById(
-        "inicio"
-      ).style.display = "none";
-
-
-      // MOSTRA QUIZ
-
-      document.getElementById(
-        "quiz"
-      ).style.display = "block";
-
-
-      // ESCONDE RESULTADO
-
-      document.getElementById(
-        "resultado"
-      ).style.display = "none";
-
-
-      perguntaAtual = 0;
-
-      pontuacao = 0;
-
-
-      mostrarPergunta();
-
-    }
-
-
-
-    /* =========================
-       MOSTRAR PERGUNTA
-    ========================== */
-
-    function mostrarPergunta() {
-
-
-      const pergunta =
-        perguntas[
-          perguntaAtual
-        ];
-
-
-      document.getElementById(
-        "progresso"
-      ).textContent =
-
-        `Pergunta ${
-          perguntaAtual + 1
-        } de ${
-          perguntas.length
-        }`;
-
-
-      document.getElementById(
-        "pergunta"
-      ).textContent =
-
-        pergunta.pergunta;
-
-
-      const alternativas =
-        document.getElementById(
-          "alternativas"
-        );
-
-
-      alternativas.innerHTML = "";
-
-
-      pergunta.alternativas.forEach(
-
-        (
-          alternativa,
-          indice
-        ) => {
-
-
-          const botao =
-            document.createElement(
-              "button"
-            );
-
-
-          botao.textContent =
-            alternativa;
-
-
-          botao.onclick =
-            function () {
-
-
-              if (
-                indice ===
-                pergunta.correta
-              ) {
-
-                pontuacao++;
-
-              }
-
-
-              perguntaAtual++;
-
-
-              if (
-
-                perguntaAtual <
-                perguntas.length
-
-              ) {
-
-                mostrarPergunta();
-
-              }
-
-              else {
-
-                mostrarResultado();
-
-              }
-
-            };
-
-
-          alternativas.appendChild(
-            botao
-          );
-
-        }
-
-      );
-
-    }
-
-
-
-    /* =========================
-       RESULTADO FINAL
-    ========================== */
-
-    function mostrarResultado() {
-
-
-      // MARCA COMO RESPONDIDO
-
-      localStorage.setItem(
-        "quizRespondido",
-        "sim"
-      );
-
-
-      // ESCONDE QUIZ
-
-      document.getElementById(
-        "quiz"
-      ).style.display = "none";
-
-
-      // MOSTRA RESULTADO
-
-      document.getElementById(
-        "resultado"
-      ).style.display = "flex";
-
-
-      let titulo = "";
-
-      let mensagem = "";
-
-
-
-      if (
-        pontuacao === 20
-      ) {
-
-
-        titulo =
-          "Você acertou 20/20! 😍❤️";
-
-
-        mensagem =
-          `Parabéns, ${nomeJogador}! Você conhece nossa história de um jeito incrível! Já pode dizer que é especialista em João & Adriana! 💍✨`;
-
-      }
-
-
-      else if (
-        pontuacao >= 17
-      ) {
-
-
-        titulo =
-          `Você acertou ${pontuacao}/20! 🥰`;
-
-
-        mensagem =
-          `Uau, ${nomeJogador}! Você conhece muito bem a nossa história! Está quase no nível especialista em João & Adriana! ❤️✨`;
-
-      }
-
-
-      else if (
-        pontuacao >= 14
-      ) {
-
-
-        titulo =
-          `Você acertou ${pontuacao}/20! 😍`;
-
-
-        mensagem =
-          `Muito bem, ${nomeJogador}! Você conhece bastante a nossa história e sabe muitos detalhes sobre nós! ❤️`;
-
-      }
-
-
-      else if (
-        pontuacao >= 10
-      ) {
-
-
-        titulo =
-          `Você acertou ${pontuacao}/20! 😊`;
-
-
-        mensagem =
-          `Foi bem, ${nomeJogador}! Mas ainda temos algumas histórias e detalhes para você descobrir sobre nós! ❤️`;
-
-      }
-
-
-      else if (
-        pontuacao >= 5
-      ) {
-
-
-        titulo =
-          `Você acertou ${pontuacao}/20! 😄`;
-
-
-        mensagem =
-          `${nomeJogador}, ainda temos muito para conversar! Parece que precisamos contar nossa história com mais detalhes! ❤️`;
-
-      }
-
-
-      else {
-
-
-        titulo =
-          `Você acertou ${pontuacao}/20! 😂`;
-
-
-        mensagem =
-          `Eita, ${nomeJogador}! Parece que você precisa conhecer melhor a história de João & Adriana! Mas ainda dá tempo de aprender tudo! ❤️`;
-
-      }
-
-
-
-      document.getElementById(
-        "tituloResultado"
-      ).textContent =
-        titulo;
-
-
-      document.getElementById(
-        "pontuacao"
-      ).textContent =
-        mensagem;
-
-    }
-
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 
