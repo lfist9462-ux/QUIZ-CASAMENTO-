@@ -202,15 +202,47 @@ function mostrarResultado(){
     })
   }).catch(()=>{});
 
+  let titulo="";
+  let mensagem="";
+
+  if(pontuacao==20){
+    titulo="👑 Perfeito!";
+    mensagem="Você acertou todas as perguntas! Parece que conhece João e Adriana melhor do que muita gente! ❤️";
+  }
+  else if(pontuacao>=17){
+    titulo="🥰 Incrível!";
+    mensagem="Você conhece muito bem a nossa história! Parabéns! ❤️";
+  }
+  else if(pontuacao>=14){
+    titulo="😍 Muito bem!";
+    mensagem="Você sabe bastante sobre nós! Obrigado por participar! ❤️";
+  }
+  else if(pontuacao>=10){
+    titulo="😊 Foi muito bem!";
+    mensagem="Você acertou várias perguntas! Ainda faltaram alguns detalhes da nossa história. ❤️";
+  }
+  else if(pontuacao>=5){
+    titulo="😄 Boa tentativa!";
+    mensagem="Você conhece um pouco da nossa história. Obrigado por participar! ❤️";
+  }
+  else{
+    titulo="😂 Valeu pela participação!";
+    mensagem="Agora você já sabe que precisa conhecer um pouco mais sobre João e Adriana! ❤️";
+  }
+
   document.getElementById("quiz").innerHTML=`
     <div style="text-align:center;padding:30px">
-      <h2>❤️ Obrigado por participar!</h2>
+      <h2>${titulo}</h2>
 
       <h1>${pontuacao}/${perguntas.length}</h1>
 
       <h3>${nomeJogador}</h3>
 
-      <p>Seu resultado foi registrado no ranking.</p>
+      <p>${mensagem}</p>
+
+      <br>
+
+      <p>❤️ Seu resultado foi registrado.</p>
     </div>
   `;
 }
