@@ -122,7 +122,6 @@ correta:2
 
 ];
 const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxDUvjHQfyuOLCo2R2A8KpfFF7E2aDp_4Wovw6YfYVnt83PwU1RDpqhPV4-7RBwzZQx/exec";
-
 let perguntaAtual = 0;
 let pontuacao = 0;
 let nomeJogador = "";
