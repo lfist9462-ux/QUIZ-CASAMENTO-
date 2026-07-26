@@ -190,16 +190,15 @@ function mostrarResultado(){
   localStorage.setItem("quizRespondido","sim");
 
   fetch(URL_SCRIPT,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      nome:nomeJogador,
-      pontuacao:pontuacao,
-      total:perguntas.length
-    })
-  }).catch(()=>{});
+  method:"POST",
+  body:new URLSearchParams({
+    nome:nomeJogador,
+    pontuacao:pontuacao
+  })
+})
+.then(res=>res.text())
+.then(console.log)
+.catch(console.error);
 
   let titulo="";
   let mensagem="";
