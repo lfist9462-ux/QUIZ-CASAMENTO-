@@ -1,4 +1,4 @@
-const perguntas = [
+  const perguntas = [
 
 {
 pergunta:"Onde João e Adriana se conheceram?",
@@ -146,8 +146,53 @@ function iniciarQuiz() {
   perguntaAtual=0;
   pontuacao=0;
 
-  mostrarPergunta();
+ function mostrarResultado(){
 
+  localStorage.setItem("quizRespondido","sim");
+
+  fetch(URL_SCRIPT,{
+    method:"POST",
+    body:new URLSearchParams({
+      nome:nomeJogador,
+      pontuacao:pontuacao
+    })
+  })
+  .then(res=>res.text())
+  .then(console.log)
+  .catch(console.error);
+
+  let titulo="";
+  let mensagem="";
+
+  if(pontuacao==20){
+    titulo="👑 Perfeito!";
+    mensagem="Você acertou todas as perguntas! Parece que conhece João e Adriana melhor do que muita gente! ❤️";
+  }else if(pontuacao>=17){
+    titulo="🥰 Incrível!";
+    mensagem="Você conhece muito bem a nossa história! Parabéns! ❤️";
+  }else if(pontuacao>=14){
+    titulo="😍 Muito bem!";
+    mensagem="Você sabe bastante sobre nós! Obrigado por participar! ❤️";
+  }else if(pontuacao>=10){
+    titulo="😊 Foi muito bem!";
+    mensagem="Você acertou várias perguntas! Ainda faltaram alguns detalhes da nossa história. ❤️";
+  }else if(pontuacao>=5){
+    titulo="😄 Boa tentativa!";
+    mensagem="Você conhece um pouco da nossa história. Obrigado por participar! ❤️";
+  }else{
+    titulo="😂 Valeu pela participação!";
+    mensagem="Agora você já sabe que precisa conhecer um pouco mais sobre João e Adriana! ❤️";
+  }
+
+  document.getElementById("quiz").innerHTML=`
+  <div style="text-align:center;padding:30px">
+    <h2>${titulo}</h2>
+    <h1>${pontuacao}/${perguntas.length}</h1>
+    <h3>${nomeJogador}</h3>
+    <p>${mensagem}</p>
+    <br>
+    <p>❤️ Seu resultado foi registrado.</p>
+  </div>`;
 }
 
 function mostrarPergunta() {
